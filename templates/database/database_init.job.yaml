@@ -20,13 +20,3 @@ spec:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-database-credentials"
                   key: superuser-url
-            - name: PUBLIC_ROLE
-              valueFrom:
-                secretKeyRef:
-                  name: "{{ .Release.Name }}-database-credentials"
-                  key: public-role
-            - name: PUBLIC_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: "{{ .Release.Name }}-database-credentials"
-                  key: public-password
