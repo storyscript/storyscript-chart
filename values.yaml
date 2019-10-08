@@ -1,4 +1,5 @@
 postgresql:
+  enabled: true
   image:
     repository: postgres
     tag: 9.6.14
@@ -9,10 +10,5 @@ postgresql:
   # it has to be a subdirectory
   postgresqlDataDir: /data/pgdata
   postgresqlDatabase: storyscript
-  postgresqlUsername: postgresqlUsername
-  postgresqlPassword: postgresqlPassword
-
-
-graphql:
-  publicRole: authenticator
-  publicPassword: authenticatorPassword
+  postgresqlUsername: storyscript
+  postgresqlPassword: storyscript
