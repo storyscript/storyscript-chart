@@ -1,0 +1,19 @@
+dependencies:
+
+# database
+- name: postgresql
+  version: 4.2.2 # 10.8.0
+  repository: https://kubernetes-charts.storage.googleapis.com
+
+# logstreamer
+#- name: filebeat
+#  version: 7.1.1
+#  repository: https://helm.elastic.co
+#
+#- name: logstash
+#  version: 2.2.0 # 7.1.1
+#  repository: https://kubernetes-charts.storage.googleapis.com
+#
+#- name: elasticsearch
+#  version: 7.1.1
+#  repository: https://helm.elastic.co

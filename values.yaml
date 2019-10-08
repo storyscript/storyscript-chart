@@ -1,0 +1,18 @@
+postgresql:
+  image:
+    repository: postgres
+    tag: 10
+  persistence:
+    enabled: true
+    mountPath: /data
+  # dataDir cannot be the mountPath,
+  # it has to be a subdirectory
+  postgresqlDataDir: /data/pgdata
+  postgresqlDatabase: storyscript
+  postgresqlUsername: postgresqlUsername
+  postgresqlPassword: postgresqlPassword
+
+
+graphql:
+  publicRole: authenticator
+  publicPassword: authenticatorPassword
