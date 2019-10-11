@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: graphql
+  labels:
+    app: graphql
+spec:
+  rules:
+    - http:
+        paths:
+        - path: /graphql
+          backend:
+            serviceName: graphql
+            servicePort: 5000

@@ -19,4 +19,4 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-database-credentials"
-                  key: superuser-url
+                  key: sqitch-url

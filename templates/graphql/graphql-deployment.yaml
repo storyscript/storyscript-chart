@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Release.Name }}-graphql"
+spec:
+  template:
+    metadata:
+      labels:
+        app: graphql
+        # logstash-enabled: "true"
+    spec:
+      containers:
+        - name: graphql
+          image: asyncy/platform-graphql
+          ports:
+            - name: http
+              containerPort: 5000
+          env:
+            - name: ROOT_DATABASE_URL
+              # used to verify authorization token
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-database-credentials"
+                  key: superuser-url
+            - name: DATABASE_URL
+              # used to connect to db
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-database-credentials"
+                  key: public-url
+            - name: NODE_ENV
+              value: dev
