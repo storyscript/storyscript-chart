@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: "{{ .Release.Name }}-graphql"
 spec:
+  selector:
+    matchLabels:
+      app: graphql
   template:
     metadata:
       labels:
