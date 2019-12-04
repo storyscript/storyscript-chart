@@ -10,7 +10,6 @@ spec:
     metadata:
       labels:
         app: graphql
-        # logstash-enabled: "true"
     spec:
       containers:
         - name: graphql
@@ -19,6 +18,8 @@ spec:
             - name: http
               containerPort: 5000
           env:
+            - name: NODE_ENV
+              value: dev
             - name: ROOT_DATABASE_URL
               # used to verify authorization token
               valueFrom:
@@ -31,5 +32,3 @@ spec:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-database-credentials"
                   key: public-url
-            - name: NODE_ENV
-              value: dev
