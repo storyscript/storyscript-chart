@@ -4,11 +4,14 @@ metadata:
   name: "{{ .Release.Name }}-gateway"
   labels:
     app: gateway
+  annotations:
+    kubernetes.io/ingress.class: nginx
 spec:
   rules:
-    - http:
-        paths:
-        - path: /
-          backend:
-            serviceName: "{{ .Release.Name }}-gateway"
-            servicePort: 8888
+  - host: "*.{{ .Values.env.name }}.{{ .Values.env.domain }}"
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: "{{ .Release.Name }}-gateway"
+          servicePort: 8888

@@ -12,3 +12,14 @@ postgresql:
   postgresqlDatabase: storyscript
   postgresqlUsername: storyscript
   postgresqlPassword: storyscript
+
+nginx-ingress:
+ rbac:
+  create: true
+ controller:
+  service:
+   loadBalancerIP:
+
+env:
+ name:
+ domain:

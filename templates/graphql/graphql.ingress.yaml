@@ -10,5 +10,5 @@ spec:
         paths:
         - path: /graphql
           backend:
-            serviceName: graphql
+            serviceName: "{{ .Release.Name }}-graphql"
             servicePort: 5000

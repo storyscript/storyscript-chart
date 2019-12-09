@@ -31,6 +31,8 @@ spec:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-gateway-config"
                   key: sentry-dsn
+            - name: PRIMARY_DOMAIN
+              value: "{{ .Values.env.name }}.{{ .Values.env.domain }}"
           resources:
             limits:
               memory: 64M
