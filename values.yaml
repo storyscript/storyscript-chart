@@ -21,5 +21,8 @@ nginx-ingress:
    loadBalancerIP:
 
 env:
- name:
- domain:
+ name: local
+ domain: storyscript.test
+
+hello-world:
+  enabled: false
