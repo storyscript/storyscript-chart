@@ -20,10 +20,6 @@ nginx-ingress:
   service:
    loadBalancerIP:
 
-env:
- name: local
- domain: storyscript.test
-
 hello-world:
   enabled: false
 
@@ -32,6 +28,9 @@ database:
 
 gateway:
   image: asyncy/http:v0.2.1-33-g536a1cb
+  dns:
+    name: local
+    domain: storyscript.test
 
 graphql:
   image: asyncy/platform-graphql
