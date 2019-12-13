@@ -26,3 +26,18 @@ env:
 
 hello-world:
   enabled: false
+
+database:
+  image: storyscript/database
+
+gateway:
+  image: asyncy/http:v0.2.1-33-g536a1cb
+
+graphql:
+  image: asyncy/platform-graphql
+
+runtime:
+  image: asyncy/platform-engine-prod:v0.3.1-755-ga9826ad
+
+synapse:
+  image: asyncy/platform-synapse:v0.1.7-3-g7cd3326

@@ -14,7 +14,7 @@ spec:
       serviceAccountName: "{{ .Release.Name }}-synapse"
       containers:
         - name: synapse
-          image: asyncy/platform-synapse:v0.1.7-3-g7cd3326
+          image: {{ .Values.synapse.image }}
           ports:
             - name: http
               containerPort: 8080
