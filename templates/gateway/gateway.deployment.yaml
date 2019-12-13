@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: gateway
-          image: asyncy/http:v0.2.1-33-g536a1cb
+          image: "{{ .Values.gateway.image }}"
           args:
             - python
             - -m

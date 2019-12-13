@@ -13,7 +13,7 @@ spec:
       restartPolicy: OnFailure
       containers:
         - name: database-init-job
-          image: storyscript/database
+          image: "{{ .Values.database.image }}"
           env:
             - name: DATABASE_URL
               valueFrom:
