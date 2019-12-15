@@ -1,0 +1,28 @@
+apiVersion: skaffold/v1
+kind: Config
+build:
+  artifacts:
+  - image: storyscript/database
+    context: ../database
+  - image: asyncy/http
+    context: ../http
+  - image: asyncy/platform-graphql
+    context: ../platform-graphql
+  - image: asyncy/platform-engine-prod
+    context: ../runtime
+  - image: asyncy/platform-synapse
+    context: ../platform-synapse
+deploy:
+  helm:
+    releases:
+    - name: storyscript
+      namespace: asyncy-system
+      chartPath: .
+      values:
+        database.image: storyscript/database
+        gateway.image: asyncy/http
+        graphql.image: asyncy/platform-graphql
+        runtime.image: asyncy/platform-engine-prod
+        synapse.image: asyncy/platform-synapse
+      setValues:
+        hello-world.enabled: true
