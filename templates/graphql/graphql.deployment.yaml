@@ -18,14 +18,8 @@ spec:
             - name: http
               containerPort: 5000
           env:
-            - name: NODE_ENV
-              value: dev
-            - name: ROOT_DATABASE_URL
-              # used to verify authorization token
-              valueFrom:
-                secretKeyRef:
-                  name: "{{ .Release.Name }}-database-credentials"
-                  key: superuser
+            - name: JWT_VERIFICATION_KEY
+              value: {{ required "A .Values.auth.jwt.key is required" .Values.auth.jwt.key }}
             - name: DATABASE_URL
               # used to connect to db
               valueFrom:

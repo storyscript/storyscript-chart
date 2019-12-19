@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Release.Name }}-auth"
+spec:
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+        - name: auth
+          image: williammartin/auth
+          imagePullPolicy: Always
+          ports:
+            - name: public
+              containerPort: 3000
+          env:
+            - name: DB_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-database-credentials"
+                  key: superuser-search_path
+            - name: SSL_MODE
+              value: "disable"
+            - name: JWT_SIGNING_KEY
+              value: {{ required "A .Values.auth.jwt.key is required" .Values.auth.jwt.key }}
+            - name: GH_CLIENT_ID
+              value: {{ required "A .Values.auth.github.client.id is required" .Values.auth.github.client.id }}
+            - name: GH_CLIENT_SECRET
+              value: {{ required "A .Values.auth.github.client.secret is required" .Values.auth.github.client.secret }}
+            - name: DOMAIN
+              value: "{{ .Values.env.name }}.{{ .Values.env.domain }}"
+            - name: POST_LOGIN_REDIRECT_URI
+              value: "http://studio.{{ .Values.env.name }}.{{ .Values.env.domain }}"
+          resources:
+            limits:
+              memory: 64M
+            requests:
+              memory: 64M
