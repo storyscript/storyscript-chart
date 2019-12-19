@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: runtime
-          image: asyncy/platform-engine-prod:v0.3.1-755-ga9826ad
+          image: williammartin/runtime
           ports:
             - name: http
               containerPort: 8084

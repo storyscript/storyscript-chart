@@ -23,3 +23,11 @@ nginx-ingress:
 env:
  name:
  domain:
+
+auth:
+ jwt:
+  key:
+ github:
+  client:
+   id:
+   secret:
