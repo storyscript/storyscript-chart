@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: "{{ .Release.Name }}-auth"
+  labels:
+    app: auth
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: "auth.{{ .Values.env.name }}.{{ .Values.env.domain }}"
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: "{{ .Release.Name }}-auth"
+          servicePort: 3000

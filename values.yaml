@@ -43,3 +43,11 @@ runtime:
 
 synapse:
   image: storyscript/synapse
+
+auth:
+ jwt:
+  key:
+ github:
+  client:
+   id:
+   secret:
