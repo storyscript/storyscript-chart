@@ -15,6 +15,7 @@ spec:
       containers:
         - name: synapse
           image: williammartin/synapse
+          imagePullPolicy: Always
           ports:
             - name: http
               containerPort: 8080

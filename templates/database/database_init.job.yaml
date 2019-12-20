@@ -14,6 +14,7 @@ spec:
       containers:
         - name: database-init-job
           image: williammartin/schema
+          imagePullPolicy: Always
           env:
             - name: DATABASE_URL
               valueFrom:

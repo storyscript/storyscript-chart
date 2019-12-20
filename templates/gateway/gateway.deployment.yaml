@@ -14,6 +14,7 @@ spec:
       containers:
         - name: gateway
           image: williammartin/gateway
+          imagePullPolicy: Always
           args:
             - python
             - -m
