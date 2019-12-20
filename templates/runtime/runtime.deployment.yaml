@@ -52,8 +52,3 @@ spec:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-runtime-sa-token"
                   key: token
-          resources:
-            limits:
-              memory: 256M
-            requests:
-              memory: 256M

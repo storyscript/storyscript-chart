@@ -45,8 +45,3 @@ spec:
               value: "{{ .Values.domain }}"
             - name: POST_LOGIN_REDIRECT_URI
               value: "http://studio.{{ .Values.domain }}"
-          resources:
-            limits:
-              memory: 64M
-            requests:
-              memory: 64M

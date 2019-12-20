@@ -33,8 +33,3 @@ spec:
                   key: sentry-dsn
             - name: PRIMARY_DOMAIN
               value: "{{ .Values.domain }}"
-          resources:
-            limits:
-              memory: 64M
-            requests:
-              memory: 64M
