@@ -26,8 +26,3 @@ spec:
                   key: superuser-url
             - name: IN_CLUSTER
               value: "true"
-          resources:
-            limits:
-              memory: 72M
-            requests:
-              memory: 72M
