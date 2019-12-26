@@ -36,9 +36,20 @@ def compile_app(app_path):
 
 
 def create_owner():
+
+    def get_existing_owner():
+        query = "SELECT uuid FROM owners WHERE username=%s"
+        cursor.execute(query, ("hello-world-owner",))
+        result = cursor.fetchone()
+        return None if result is None else result[0]
+
+    owner_uuid = get_existing_owner()
+    if owner_uuid is not None:
+        return owner_uuid
     query = "INSERT INTO owners (username) VALUES (%s) RETURNING uuid"
     cursor.execute(query, ("hello-world-owner",))
-    return cursor.fetchone()[0]
+    owner_uuid = cursor.fetchone()[0]
+    return owner_uuid
 
 
 def create_token(owner_uuid):
@@ -52,6 +63,16 @@ def create_token(owner_uuid):
 
 
 def create_app(owner_uuid):
+
+    def get_existing_app():
+        query = "SELECT app_uuid FROM app_dns WHERE hostname=%s"
+        cursor.execute(query, ("hello-world",))
+        result = cursor.fetchone()
+        return None if result is None else result[0]
+
+    app_uuid = get_existing_app()
+    if app_uuid is not None:
+        return app_uuid
     query = "INSERT INTO apps (owner_uuid, name) VALUES (%s, %s) RETURNING uuid"
     cursor.execute(query, (owner_uuid, "hello-world"))
     app_uuid = cursor.fetchone()[0]
