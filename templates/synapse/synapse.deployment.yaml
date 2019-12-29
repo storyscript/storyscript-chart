@@ -23,7 +23,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-database-credentials"
-                  key: superuser-url
+                  key: superuser
             - name: IN_CLUSTER
               value: "true"
           resources:

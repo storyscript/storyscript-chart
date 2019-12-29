@@ -35,6 +35,8 @@ gateway:
 
 graphql:
   image: asyncy/platform-graphql
+  postgresqlUsername: asyncy_authenticator
+  postgresqlPassword: PLEASE_CHANGE_ME
 
 runtime:
   image: asyncy/platform-engine-prod:v0.3.1-755-ga9826ad

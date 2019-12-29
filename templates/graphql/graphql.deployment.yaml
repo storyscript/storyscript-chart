@@ -25,10 +25,10 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-database-credentials"
-                  key: superuser-url
+                  key: superuser
             - name: DATABASE_URL
               # used to connect to db
               valueFrom:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-database-credentials"
-                  key: public-url
+                  key: public

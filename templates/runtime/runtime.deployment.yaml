@@ -41,7 +41,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-database-credentials"
-                  key: superuser-url-search-path
+                  key: superuser-search_path
             - name: CLUSTER_CERT
               valueFrom:
                 secretKeyRef:

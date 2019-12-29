@@ -15,8 +15,15 @@ spec:
         - name: database-init-job
           image: "{{ .Values.database.image }}"
           env:
-            - name: DATABASE_URL
+            - name: PGOPTIONS
+              # used to create graphql authenticator role
               valueFrom:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-database-credentials"
-                  key: sqitch-url
+                  key: public-pgoptions
+            - name: DATABASE_URL
+              # used to connect to database
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-database-credentials"
+                  key: superuser-sqitch

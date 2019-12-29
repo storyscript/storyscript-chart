@@ -10,7 +10,7 @@
   {{- if and (hasKey . "superuser") .superuser -}}
     {{- $_ := set $params "credentials" (printf "%s:%s" .Values.postgresql.postgresqlUsername .Values.postgresql.postgresqlPassword) -}}
   {{- else -}}
-    {{- $_ := set $params "credentials" (printf "%s:%s" "asyncy_authenticator" "PLEASE_CHANGE_ME") -}}
+    {{- $_ := set $params "credentials" (printf "%s:%s" .Values.graphql.postgresqlUsername .Values.graphql.postgresqlPassword) -}}
   {{- end -}}
   {{- /* host */ -}}
   {{- $_ := set $params "host" (printf "%s-postgresql.%s.svc.cluster.local" .Release.Name .Release.Namespace) -}}
@@ -23,7 +23,6 @@
 
   {{- printf "%s://%s@%s/%s%s" (get $params "scheme") (get $params "credentials") (get $params "host") (get $params "database") (get $params "search_path") -}}
 {{- end -}}
-
 
 {{- define "storyscript.gatewayDNS" -}}
   {{- printf "%s.%s" .Values.gateway.dns.subdomain .Values.gateway.dns.domain -}}
