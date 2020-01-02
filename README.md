@@ -8,10 +8,9 @@ Instructions for local setup:
 $ minikube addons enable ingress ingress-dns
 $ # add the minikube IP as a DNS server for the .test TLD (follow ingress-dns instructions)
 ```
-3. Install the helm chart in the `asyncy-system` namespace.
+3. Install the helm chart.
 ```
-$ kubectl create namespace asyncy-system
-$ helm install storyscript . --namespace asyncy-system --set hello-world.enabled=true
+$ helm install storyscript . --set hello-world.enabled=true
 ```
 4. Curl the hello-world app! 🚀
 ```

@@ -42,4 +42,4 @@ runtime:
   image: asyncy/platform-engine-prod:v0.3.1-755-ga9826ad
 
 synapse:
-  image: asyncy/platform-synapse:v0.1.7-3-g7cd3326
+  image: storyscript/synapse
