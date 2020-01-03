@@ -27,11 +27,20 @@ spec:
             - name: SSL_MODE
               value: "disable"
             - name: JWT_SIGNING_KEY
-              value: {{ required "A .Values.auth.jwt.key is required" .Values.auth.jwt.key }}
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-auth-config"
+                  key: jwt_secret_key
             - name: GH_CLIENT_ID
-              value: {{ required "A .Values.auth.github.client.id is required" .Values.auth.github.client.id }}
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-auth-config"
+                  key: github_client_id
             - name: GH_CLIENT_SECRET
-              value: {{ required "A .Values.auth.github.client.secret is required" .Values.auth.github.client.secret }}
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-auth-config"
+                  key: github_client_secret
             - name: DOMAIN
               value: "{{ .Values.domain }}"
             - name: POST_LOGIN_REDIRECT_URI
