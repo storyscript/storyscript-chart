@@ -8,7 +8,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: "*.{{ include "storyscript.gatewayDNS" . }}"
+  - host: "*.{{ .Values.domain }}"
     http:
       paths:
       - path: /

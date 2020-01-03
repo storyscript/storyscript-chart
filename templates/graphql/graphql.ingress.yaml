@@ -6,7 +6,7 @@ metadata:
     app: graphql
 spec:
   rules:
-  - host: "api.{{ .Values.env.name }}.{{ .Values.env.domain }}"
+  - host: "api.{{ .Values.domain }}"
     http:
       paths:
       - path: /graphql

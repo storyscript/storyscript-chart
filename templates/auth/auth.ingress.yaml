@@ -8,7 +8,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: "auth.{{ .Values.env.name }}.{{ .Values.env.domain }}"
+  - host: "auth.{{ .Values.domain }}"
     http:
       paths:
       - path: /
