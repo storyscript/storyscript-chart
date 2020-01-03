@@ -27,26 +27,26 @@ hello-world:
   image: storyscript/hello-world
 
 database:
-  image: storyscript/database
+  image: storyscript/schema
 
 gateway:
-  image: asyncy/http:v0.2.1-33-g536a1cb
+  image: storyscript/gateway
 
 graphql:
-  image: asyncy/platform-graphql
+  image: storyscript/graphql
   postgresqlUsername: asyncy_authenticator
   postgresqlPassword: PLEASE_CHANGE_ME
 
 runtime:
-  image: asyncy/platform-engine-prod:v0.3.1-755-ga9826ad
+  image: storyscript/runtime
 
 synapse:
   image: storyscript/synapse
 
 auth:
- jwt:
-  key:
- github:
-  client:
-   id:
-   secret:
+  image: storyscript/auth
+  jwt:
+    secret_key:
+  github:
+    client_id:
+    client_secret:
