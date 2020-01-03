@@ -32,7 +32,7 @@ spec:
                   name: "{{ .Release.Name }}-gateway-config"
                   key: sentry-dsn
             - name: PRIMARY_DOMAIN
-              value: "{{ include "storyscript.gatewayDNS" . }}"
+              value: "{{ .Values.domain }}"
           resources:
             limits:
               memory: 64M

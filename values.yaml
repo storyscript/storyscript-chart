@@ -1,3 +1,5 @@
+domain: local.storyscript.test
+
 postgresql:
   enabled: true
   image:
@@ -29,9 +31,6 @@ database:
 
 gateway:
   image: asyncy/http:v0.2.1-33-g536a1cb
-  dns:
-    subdomain: local
-    domain: storyscript.test
 
 graphql:
   image: asyncy/platform-graphql

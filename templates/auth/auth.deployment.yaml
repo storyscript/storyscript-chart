@@ -33,9 +33,9 @@ spec:
             - name: GH_CLIENT_SECRET
               value: {{ required "A .Values.auth.github.client.secret is required" .Values.auth.github.client.secret }}
             - name: DOMAIN
-              value: "{{ .Values.env.name }}.{{ .Values.env.domain }}"
+              value: "{{ .Values.domain }}"
             - name: POST_LOGIN_REDIRECT_URI
-              value: "http://studio.{{ .Values.env.name }}.{{ .Values.env.domain }}"
+              value: "http://studio.{{ .Values.domain }}"
           resources:
             limits:
               memory: 64M
