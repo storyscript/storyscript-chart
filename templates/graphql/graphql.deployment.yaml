@@ -19,7 +19,10 @@ spec:
               containerPort: 5000
           env:
             - name: JWT_VERIFICATION_KEY
-              value: {{ required "A .Values.auth.jwt.key is required" .Values.auth.jwt.key }}
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-auth-config"
+                  key: jwt_secret_key
             - name: DATABASE_URL
               # used to connect to db
               valueFrom:
