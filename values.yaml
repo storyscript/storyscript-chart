@@ -1,4 +1,6 @@
-domain: local.storyscript.test
+# Set this to your domain name
+# App URLs will be "<app-dns>.{{ .Values.domain }}"
+domain: example.com
 
 postgresql:
   enabled: true
@@ -12,17 +14,20 @@ postgresql:
   # it has to be a subdirectory
   postgresqlDataDir: /data/pgdata
   postgresqlDatabase: storyscript
-  postgresqlUsername: storyscript
-  postgresqlPassword: storyscript
+  postgresqlUsername: storyscript_superuser
+  postgresqlPassword: storyscript_superuser
 
 nginx-ingress:
- rbac:
-  create: true
- controller:
-  service:
-   loadBalancerIP:
+  rbac:
+    create: true
+  controller:
+    service:
+      # only for GKE
+      loadBalancerIP:
 
 hello-world:
+  # Enabling this creates a new owner, app and release
+  # deploying a simple http story at "hello-world.{{ .Values.domain }}"
   enabled: false
   image: storyscript/hello-world
 
@@ -34,8 +39,9 @@ gateway:
 
 graphql:
   image: storyscript/graphql
-  postgresqlUsername: asyncy_authenticator
-  postgresqlPassword: PLEASE_CHANGE_ME
+  # Credentials of the role used by the API server
+  postgresqlUsername: storyscript_authenticator
+  postgresqlPassword: storyscript_authenticator
 
 runtime:
   image: storyscript/runtime
@@ -46,7 +52,9 @@ synapse:
 auth:
   image: storyscript/auth
   jwt:
-    secret_key:
+    secret_key: my-secret-key
+  # GitHub app oauth credentials, callback URL set to:
+  #  http://auth.{{ .Values.domain }}/callback
   github:
     client_id:
     client_secret:
