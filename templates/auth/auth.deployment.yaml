@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Release.Name }}-auth"
+spec:
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+        - name: auth
+          image: "{{ .Values.auth.image }}"
+          ports:
+            - name: public
+              containerPort: 3000
+          env:
+            - name: DB_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-database-credentials"
+                  key: superuser-search_path
+            - name: SSL_MODE
+              value: "disable"
+            - name: JWT_SIGNING_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-auth-config"
+                  key: jwt_secret_key
+            - name: GH_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-auth-config"
+                  key: github_client_id
+            - name: GH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-auth-config"
+                  key: github_client_secret
+            - name: DOMAIN
+              value: "{{ .Values.domain }}"
+            - name: POST_LOGIN_REDIRECT_URI
+              value: "http://studio.{{ .Values.domain }}"

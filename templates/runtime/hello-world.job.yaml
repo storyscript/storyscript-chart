@@ -1,0 +1,24 @@
+{{- if (get .Values "hello-world").enabled -}}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: "{{ .Release.Name }}-hello-world"
+  annotations:
+    "helm.sh/hook": "post-install,post-upgrade"
+    "helm.sh/hook-delete-policy": "hook-succeeded,before-hook-creation"
+spec:
+  template:
+    metadata:
+      name: "{{ .Release.Name }}-hello-world"
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: hello-world
+          image: "{{ (get .Values "hello-world").image }}"
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-database-credentials"
+                  key: superuser-search_path
+{{- end -}}

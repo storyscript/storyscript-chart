@@ -1,0 +1,4 @@
+Storyscript is now installed in your cluster! 🚀
+{{ if (get .Values "hello-world").enabled -}}
+A simple hello-world app is deployed at hello-world.{{ .Values.domain }}
+{{ end -}}

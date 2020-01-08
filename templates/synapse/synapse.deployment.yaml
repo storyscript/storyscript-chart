@@ -14,20 +14,17 @@ spec:
       serviceAccountName: "{{ .Release.Name }}-synapse"
       containers:
         - name: synapse
-          image: asyncy/platform-synapse:v0.1.7-3-g7cd3326
+          image: "{{ .Values.synapse.image }}"
           ports:
             - name: http
               containerPort: 8080
           env:
+            - name: NAMESPACE
+              value: {{ .Release.Namespace }}
             - name: POSTGRES
               valueFrom:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-database-credentials"
-                  key: superuser-url
+                  key: superuser
             - name: IN_CLUSTER
               value: "true"
-          resources:
-            limits:
-              memory: 72M
-            requests:
-              memory: 72M

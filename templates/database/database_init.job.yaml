@@ -3,7 +3,7 @@ kind: Job
 metadata:
   name: "{{ .Release.Name }}-database-init"
   annotations:
-    "helm.sh/hook": "post-install"
+    "helm.sh/hook": "post-install,post-upgrade"
     "helm.sh/hook-delete-policy": "hook-succeeded,before-hook-creation"
 spec:
   template:
@@ -13,10 +13,17 @@ spec:
       restartPolicy: OnFailure
       containers:
         - name: database-init-job
-          image: storyscript/database
+          image: "{{ .Values.database.image }}"
           env:
-            - name: DATABASE_URL
+            - name: PGOPTIONS
+              # used to create graphql authenticator role
               valueFrom:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-database-credentials"
-                  key: sqitch-url
+                  key: public-pgoptions
+            - name: DATABASE_URL
+              # used to connect to database
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-database-credentials"
+                  key: superuser-sqitch

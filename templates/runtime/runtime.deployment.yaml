@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: runtime
-          image: asyncy/platform-engine-prod:v0.3.1-755-ga9826ad
+          image: "{{ .Values.runtime.image }}"
           ports:
             - name: http
               containerPort: 8084
@@ -41,7 +41,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-database-credentials"
-                  key: superuser-url-search-path
+                  key: superuser-search_path
             - name: CLUSTER_CERT
               valueFrom:
                 secretKeyRef:
@@ -52,8 +52,3 @@ spec:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-runtime-sa-token"
                   key: token
-          resources:
-            limits:
-              memory: 256M
-            requests:
-              memory: 256M

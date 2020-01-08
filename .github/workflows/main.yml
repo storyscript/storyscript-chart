@@ -1,0 +1,36 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - Chart.yaml
+jobs:
+  publish_chart:
+    name: Publish chart
+    runs-on: ubuntu-latest
+    container:
+      image: storyscript/chart-ci:0.2.3-3.0.2
+      env:
+        CR_OWNER: ${{ github.event.repository.owner.login }}
+        CR_GIT_REPO: ${{ github.event.repository.name }}
+        CR_CHARTS_REPO: https://${{ github.event.repository.owner.login }}.github.io/${{ github.event.repository.name }}
+        CR_INDEX_PATH: .
+    steps:
+      - name: Checkout head commit
+        uses: actions/checkout@v2
+      - name: Package chart
+        run: helm package . -d .cr-release-packages
+      - name: Create release
+        run: cr upload
+        env:
+          CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Update helm repository index
+        run: cr index
+      - name: Commit index.yaml
+        run: |
+          git config --global user.name 'Storyscript Infrastructure'
+          git config --global user.email 'infra@storyscript.io'
+          git add index.yaml
+          git commit -m "Update index.yaml"
+          git push

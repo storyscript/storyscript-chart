@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: gateway
-          image: asyncy/http:v0.2.1-33-g536a1cb
+          image: "{{ .Values.gateway.image }}"
           args:
             - python
             - -m
@@ -32,9 +32,4 @@ spec:
                   name: "{{ .Release.Name }}-gateway-config"
                   key: sentry-dsn
             - name: PRIMARY_DOMAIN
-              value: "{{ .Values.env.name }}.{{ .Values.env.domain }}"
-          resources:
-            limits:
-              memory: 64M
-            requests:
-              memory: 64M
+              value: "{{ .Values.domain }}"

@@ -13,22 +13,19 @@ spec:
     spec:
       containers:
         - name: graphql
-          image: asyncy/platform-graphql
+          image: "{{ .Values.graphql.image }}"
           ports:
             - name: http
               containerPort: 5000
           env:
-            - name: NODE_ENV
-              value: dev
-            - name: ROOT_DATABASE_URL
-              # used to verify authorization token
+            - name: JWT_VERIFICATION_KEY
               valueFrom:
                 secretKeyRef:
-                  name: "{{ .Release.Name }}-database-credentials"
-                  key: superuser-url
+                  name: "{{ .Release.Name }}-auth-config"
+                  key: jwt_secret_key
             - name: DATABASE_URL
               # used to connect to db
               valueFrom:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-database-credentials"
-                  key: public-url
+                  key: public
