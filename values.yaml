@@ -61,3 +61,6 @@ auth:
 
 sls:
   image: storyscript/sls
+
+studio:
+  image: storyscript/studio
