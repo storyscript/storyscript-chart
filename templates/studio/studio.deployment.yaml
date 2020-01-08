@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Release.Name }}-studio"
+spec:
+  selector:
+    matchLabels:
+      app: studio
+  template:
+    metadata:
+      labels:
+        app: studio
+    spec:
+      containers:
+        - name: studio
+          image: "{{ .Values.studio.image }}"
+          imagePullPolicy: Always
+          ports:
+            - name: public
+              containerPort: 80
+          env:
+            - name: SSL_ENABLE
+              value: "false"
+            - name: SLS_URL
+              value: "sls.{{ .Values.domain }}"
+            - name: API_URL
+              value: "api.{{ .Values.domain }}"
+            - name: AUTH_URL
+              value: "auth.{{ .Values.domain }}/login"
