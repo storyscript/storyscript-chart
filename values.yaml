@@ -42,6 +42,7 @@ graphql:
   # Credentials of the role used by the API server
   postgresqlUsername: storyscript_authenticator
   postgresqlPassword: storyscript_authenticator
+  corsWhitelistRegexp: .*
 
 runtime:
   image: storyscript/runtime

@@ -16,7 +16,7 @@ spec:
           image: "{{ .Values.graphql.image }}"
           ports:
             - name: http
-              containerPort: 5000
+              containerPort: 3000
           env:
             - name: JWT_VERIFICATION_KEY
               valueFrom:
@@ -29,3 +29,5 @@ spec:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-database-credentials"
                   key: public
+            - name: WHITELIST_DOMAINS_REGEXP
+              value: {{ .Values.graphql.corsWhitelistRegexp }}

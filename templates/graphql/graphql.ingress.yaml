@@ -12,12 +12,12 @@ spec:
       - path: /graphql
         backend:
           serviceName: "{{ .Release.Name }}-graphql"
-          servicePort: 5000
+          servicePort: 3000
       - path: /graphiql
         backend:
           serviceName: "{{ .Release.Name }}-graphql"
-          servicePort: 5000
+          servicePort: 3000
       - path: /_postgraphile
         backend:
           serviceName: "{{ .Release.Name }}-graphql"
-          servicePort: 5000
+          servicePort: 3000
