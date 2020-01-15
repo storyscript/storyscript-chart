@@ -27,3 +27,5 @@ spec:
               value: "api.{{ .Values.domain }}"
             - name: AUTH_URL
               value: "auth.{{ .Values.domain }}/login"
+            - name: LOGOUT_URL
+              value: "auth.{{ .Values.domain }}/logout"
