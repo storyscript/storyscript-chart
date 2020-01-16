@@ -7,6 +7,10 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
 spec:
+  tls:
+  - hosts:
+     - "studio.{{ .Values.domain }}"
+    secretName: "{{ .Release.Name }}-tls-cert"
   rules:
   - host: "studio.{{ .Values.domain }}"
     http:

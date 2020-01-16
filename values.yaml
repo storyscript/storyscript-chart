@@ -25,6 +25,10 @@ nginx-ingress:
       # only for GKE
       loadBalancerIP:
 
+tls:
+ fullchain:
+ privkey:
+
 hello-world:
   # Enabling this creates a new owner, app and release
   # deploying a simple http story at "hello-world.{{ .Values.domain }}"
