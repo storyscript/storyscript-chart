@@ -59,7 +59,7 @@ auth:
   jwt:
     secret_key: my-secret-key
   # GitHub app oauth credentials, callback URL set to:
-  #  http://auth.{{ .Values.domain }}/callback
+  #  https://auth.{{ .Values.domain }}/callback
   github:
     client_id:
     client_secret:

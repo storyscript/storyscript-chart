@@ -19,7 +19,7 @@ hello-world:
 auth:
   github:
     # GitHub app oauth credentials, callback URL set to:
-    #  http://auth.{{ .Values.domain }}/callback
+    #  https://auth.{{ .Values.domain }}/callback
     client_id: *****
     client_secret: *****
 EOF
