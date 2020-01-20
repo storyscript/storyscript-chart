@@ -1,19 +1,19 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "{{ .Release.Name }}-database-init"
+  name: "{{ .Release.Name }}-schema-apply"
   annotations:
     "helm.sh/hook": "post-install,post-upgrade"
     "helm.sh/hook-delete-policy": "hook-succeeded,before-hook-creation"
 spec:
   template:
     metadata:
-      name: "{{ .Release.Name }}-database-init"
+      name: "{{ .Release.Name }}-schema-apply"
     spec:
       restartPolicy: OnFailure
       containers:
-        - name: database-init-job
-          image: "{{ .Values.database.image }}"
+        - name: schema-apply-job
+          image: "{{ .Values.schema.image }}"
           env:
             - name: PGOPTIONS
               # used to create graphql authenticator role
