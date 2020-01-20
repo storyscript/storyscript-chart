@@ -4,6 +4,7 @@ metadata:
   name: "{{ .Release.Name }}-schema-apply"
   annotations:
     "helm.sh/hook": "post-install,post-upgrade"
+    "helm.sh/hook-weight": "-1"
     "helm.sh/hook-delete-policy": "hook-succeeded,before-hook-creation"
 spec:
   template:

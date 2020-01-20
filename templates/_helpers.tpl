@@ -13,7 +13,11 @@
     {{- $_ := set $params "credentials" (printf "%s:%s" .Values.graphql.postgresqlUsername .Values.graphql.postgresqlPassword) -}}
   {{- end -}}
   {{- /* host */ -}}
-  {{- $_ := set $params "host" (printf "%s-postgresql.%s.svc.cluster.local" .Release.Name .Release.Namespace) -}}
+  {{- if .Values.postgresql.enabled -}}
+    {{- $_ := set $params "host" (printf "%s-postgresql.%s.svc.cluster.local" .Release.Name .Release.Namespace) -}}
+  {{- else -}}
+    {{- $_ := set $params "host" (required "A .Values.postgresql.postgresqlHost is required if postgresql is disabled" .Values.postgresql.postgresqlHost) -}}
+  {{- end -}}
   {{- /* database */ -}}
   {{- $_ := set $params "database" .Values.postgresql.postgresqlDatabase -}}
   {{- /* search path */ -}}

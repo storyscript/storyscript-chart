@@ -13,6 +13,8 @@ postgresql:
   # dataDir cannot be the mountPath,
   # it has to be a subdirectory
   postgresqlDataDir: /data/pgdata
+  # postgresqlHost is only used if enabled = false
+  postgresqlHost:
   postgresqlDatabase: storyscript
   postgresqlUsername: storyscript_superuser
   postgresqlPassword: storyscript_superuser
