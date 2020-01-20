@@ -35,7 +35,7 @@ spec:
             - name: SENTRY_DSN
               valueFrom:
                 secretKeyRef:
-                  name: "{{ .Release.Name }}-runtime-config"
+                  name: "{{ .Release.Name }}-runtime"
                   key: sentry-dsn
             - name: POSTGRES_URI
               valueFrom:
