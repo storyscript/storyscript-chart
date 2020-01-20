@@ -28,17 +28,17 @@ spec:
             - name: JWT_SIGNING_KEY
               valueFrom:
                 secretKeyRef:
-                  name: "{{ .Release.Name }}-auth-config"
+                  name: "{{ .Release.Name }}-auth"
                   key: jwt_secret_key
             - name: GH_CLIENT_ID
               valueFrom:
                 secretKeyRef:
-                  name: "{{ .Release.Name }}-auth-config"
+                  name: "{{ .Release.Name }}-auth"
                   key: github_client_id
             - name: GH_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: "{{ .Release.Name }}-auth-config"
+                  name: "{{ .Release.Name }}-auth"
                   key: github_client_secret
             - name: DOMAIN
               value: "{{ .Values.domain }}"

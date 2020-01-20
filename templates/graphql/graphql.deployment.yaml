@@ -21,7 +21,7 @@ spec:
             - name: JWT_VERIFICATION_KEY
               valueFrom:
                 secretKeyRef:
-                  name: "{{ .Release.Name }}-auth-config"
+                  name: "{{ .Release.Name }}-auth"
                   key: jwt_secret_key
             - name: DATABASE_URL
               # used to connect to db
