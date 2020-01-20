@@ -26,8 +26,9 @@ nginx-ingress:
       loadBalancerIP:
 
 tls:
- fullchain:
- privkey:
+  enabled: true
+  fullchain:
+  privkey:
 
 hello-world:
   # Enabling this creates a new owner, app and release
