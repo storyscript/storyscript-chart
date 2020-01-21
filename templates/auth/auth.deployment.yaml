@@ -43,4 +43,4 @@ spec:
             - name: DOMAIN
               value: "{{ .Values.domain }}"
             - name: POST_LOGIN_REDIRECT_URI
-              value: "https://studio.{{ .Values.domain }}"
+              value: http{{ ternary "s" "" .Values.tls.enabled }}://studio.{{ .Values.domain }}
