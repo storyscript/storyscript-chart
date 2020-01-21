@@ -2,6 +2,11 @@
 # App URLs will be "<app-dns>.{{ .Values.domain }}"
 domain: example.com
 
+tls:
+  enabled: false
+  fullchain:
+  privkey:
+
 postgresql:
   enabled: true
   image:
@@ -26,11 +31,6 @@ nginx-ingress:
     service:
       # only for GKE
       loadBalancerIP:
-
-tls:
-  enabled: true
-  fullchain:
-  privkey:
 
 hello-world:
   # Enabling this creates a new owner, app and release
