@@ -4,7 +4,7 @@ dependencies:
 - name: postgresql
   version: 6.3.9
   repository: https://kubernetes-charts.storage.googleapis.com
-  condition: postgresql.enabled
+  condition: postgresql.create
 
 - name: nginx-ingress
   version: 1.26.2

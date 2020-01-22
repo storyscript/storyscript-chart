@@ -8,7 +8,7 @@ tls:
   privkey:
 
 postgresql:
-  enabled: true
+  create: true
   image:
     repository: postgres
     tag: 9.6.14
@@ -18,7 +18,7 @@ postgresql:
   # dataDir cannot be the mountPath,
   # it has to be a subdirectory
   postgresqlDataDir: /data/pgdata
-  # postgresqlHost is only used if enabled = false
+  # postgresqlHost is only used if create=false
   postgresqlHost:
   postgresqlDatabase: storyscript
   postgresqlUsername: storyscript_superuser
