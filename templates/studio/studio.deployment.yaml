@@ -20,7 +20,7 @@ spec:
               containerPort: 80
           env:
             - name: SSL_ENABLE
-              value: "false"
+              value: "{{ .Values.tls.enabled }}"
             - name: SLS_URL
               value: "sls.{{ .Values.domain }}"
             - name: API_URL
