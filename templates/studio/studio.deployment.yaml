@@ -29,3 +29,5 @@ spec:
               value: "auth.{{ .Values.domain }}/login"
             - name: LOGOUT_URL
               value: "auth.{{ .Values.domain }}/logout"
+            - name: DOCS_ROOT
+              value: "/docs"
