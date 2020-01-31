@@ -44,3 +44,8 @@ spec:
               value: "{{ .Values.domain }}"
             - name: DEFAULT_REDIRECT_URI
               value: http{{ ternary "s" "" .Values.tls.enabled }}://studio.{{ .Values.domain }}
+            - name: ALLOWLIST_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-auth"
+                  key: allowlist_token

@@ -61,6 +61,8 @@ auth:
   image: storyscript/auth
   jwt:
     secret_key: my-secret-key
+
+  allowlist_token: allowlist-token
   # GitHub app oauth credentials, callback URL set to:
   #  https://auth.{{ .Values.domain }}/callback
   github:
