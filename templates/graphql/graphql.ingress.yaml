@@ -5,12 +5,9 @@ metadata:
   labels:
     app: graphql
 spec:
-  {{- if .Values.tls.enabled }}
   tls:
   - hosts:
      - "api.{{ .Values.domain }}"
-    secretName: "{{ .Release.Name }}-tls-cert"
-  {{- end }}
   rules:
   - host: "api.{{ .Values.domain }}"
     http:

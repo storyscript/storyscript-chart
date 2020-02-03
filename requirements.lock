@@ -2,8 +2,8 @@ dependencies:
 - name: postgresql
   repository: https://kubernetes-charts.storage.googleapis.com
   version: 6.3.9
-- name: nginx-ingress
+- name: traefik
   repository: https://kubernetes-charts.storage.googleapis.com
-  version: 1.26.2
-digest: sha256:038759a4d076da335d483e92293d8e4a17cf025e7fbeda333a341c9c08b5cd22
-generated: "2019-12-14T00:23:43.315182+05:30"
+  version: 1.85.1
+digest: sha256:58ebf82423684aa47d8187e07e99951d39c6935d61747577dd19d616c7b25c7e
+generated: "2020-01-30T20:26:32.356788+05:30"

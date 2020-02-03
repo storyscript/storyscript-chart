@@ -4,15 +4,10 @@ metadata:
   name: "{{ .Release.Name }}-studio"
   labels:
     app: studio
-  annotations:
-    kubernetes.io/ingress.class: nginx
 spec:
-  {{- if .Values.tls.enabled }}
   tls:
   - hosts:
      - "studio.{{ .Values.domain }}"
-    secretName: "{{ .Release.Name }}-tls-cert"
-  {{- end }}
   rules:
   - host: "studio.{{ .Values.domain }}"
     http:

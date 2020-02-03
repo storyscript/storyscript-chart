@@ -2,11 +2,6 @@
 # App URLs will be "<app-dns>.{{ .Values.domain }}"
 domain: example.com
 
-tls:
-  enabled: false
-  fullchain:
-  privkey:
-
 postgresql:
   create: true
   image:
@@ -24,13 +19,19 @@ postgresql:
   postgresqlUsername: storyscript_superuser
   postgresqlPassword: storyscript_superuser
 
-nginx-ingress:
+traefik:
+  enabled: true
+  loadBalancerIP:
   rbac:
-    create: true
-  controller:
-    service:
-      # only for GKE
-      loadBalancerIP:
+    enabled: true
+  ssl:
+    enabled: true
+    # TODO: need to fix this!
+    # see Note on https://docs.traefik.io/v1.7/configuration/backends/kubernetes/#tls-communication-between-traefik-and-backend-pods
+    insecureSkipVerify: true
+    defaultCert:
+    defaultKey:
+
 
 hello-world:
   # Enabling this creates a new owner, app and release

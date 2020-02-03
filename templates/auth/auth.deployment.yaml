@@ -43,9 +43,19 @@ spec:
             - name: DOMAIN
               value: "{{ .Values.domain }}"
             - name: DEFAULT_REDIRECT_URI
-              value: http{{ ternary "s" "" .Values.tls.enabled }}://studio.{{ .Values.domain }}
+              value: https://studio.{{ .Values.domain }}
             - name: ALLOWLIST_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-auth"
                   key: allowlist_token
+            - name: TLS_CERT
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-traefik-default-cert"
+                  key: tls.crt
+            - name: TLS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-traefik-default-cert"
+                  key: tls.key

@@ -6,6 +6,6 @@ dependencies:
   repository: https://kubernetes-charts.storage.googleapis.com
   condition: postgresql.create
 
-- name: nginx-ingress
-  version: 1.26.2
+- name: traefik
+  version: 1.85.1
   repository: https://kubernetes-charts.storage.googleapis.com
