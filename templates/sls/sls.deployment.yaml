@@ -15,9 +15,12 @@ spec:
         app: sls
     spec:
       containers:
-      - name: sls
-        image: "{{ .Values.sls.image }}"
-        imagePullPolicy: IfNotPresent
-        ports:
-        - name: http
-          containerPort: 2042
+        - name: sls
+          image: "{{ .Values.sls.image }}"
+          imagePullPolicy: IfNotPresent
+          ports:
+          - name: http
+            containerPort: 2042
+          env:
+            - name: STORYSCRIPT_HUB_API
+              value: http{{ ternary "s" "" .Values.tls.enabled }}://api.{{ .Values.domain }}/graphql
