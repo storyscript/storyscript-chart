@@ -41,9 +41,6 @@ hello-world:
 schema:
   image: storyscript/schema
 
-gateway:
-  image: storyscript/gateway
-
 graphql:
   image: storyscript/graphql
   # Credentials of the role used by the API server
@@ -51,11 +48,8 @@ graphql:
   postgresqlPassword: storyscript_authenticator
   corsWhitelistRegexp: .*
 
-runtime:
-  image: storyscript/runtime
-
-synapse:
-  image: storyscript/synapse
+scheduler:
+  image: storyscript/scheduler
 
 auth:
   image: storyscript/auth

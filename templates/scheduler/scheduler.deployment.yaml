@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Release.Name }}-scheduler"
+spec:
+  selector:
+    matchLabels:
+      app: scheduler
+  template:
+    metadata:
+      labels:
+        app: scheduler
+    spec:
+      serviceAccountName: "{{ .Release.Name }}-scheduler"
+      containers:
+        - name: auth
+          image: "{{ .Values.scheduler.image }}"
+          ports:
+            - name: public
+              containerPort: 3000
+          env:
+            - name: CLUSTER
+              value: "true"
