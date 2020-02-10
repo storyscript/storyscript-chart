@@ -21,7 +21,7 @@ data:
         server_name {{ .Values.domain }} www.{{ .Values.domain }};
 
         location = / {
-            proxy_set_header Host www.{{ .Values.domain }};
+            proxy_set_header Host {{ .Values.domain }};
             proxy_pass https://landing;
             proxy_cache_revalidate on;
         }
@@ -31,7 +31,7 @@ data:
         }
 
         location @static_landing {
-            proxy_set_header Host www.{{ .Values.domain }};
+            proxy_set_header Host {{ .Values.domain }};
             proxy_pass https://landing$uri;
 
             proxy_intercept_errors on;
