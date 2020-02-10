@@ -1,0 +1,29 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: "{{ .Release.Name }}-proxy"
+spec:
+  selector:
+    matchLabels:
+      app: proxy
+  template:
+    metadata:
+      labels:
+        app: proxy
+    spec:
+      volumes:
+      - name: "{{ .Release.Name }}-proxy-conf"
+        configMap:
+          name: "{{ .Release.Name }}-proxy-conf"
+          items:
+            - key: nginx.conf
+              path: nginx.conf
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+          - containerPort: 80
+          volumeMounts:
+          - mountPath: /etc/nginx
+            readOnly: true
+            name: "{{ .Release.Name }}-proxy-conf"
