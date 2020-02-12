@@ -39,7 +39,7 @@ hello-world:
   image: storyscript/hello-world
 
 schema:
-  image: storyscript/schema
+  image: storyscript/schema:lts
 
 gateway:
   image: storyscript/gateway
