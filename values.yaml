@@ -45,7 +45,7 @@ gateway:
   image: storyscript/gateway
 
 graphql:
-  image: storyscript/graphql
+  image: storyscript/graphql:lts
   # Credentials of the role used by the API server
   postgresqlUsername: storyscript_authenticator
   postgresqlPassword: storyscript_authenticator
@@ -58,7 +58,7 @@ synapse:
   image: storyscript/synapse
 
 auth:
-  image: storyscript/auth
+  image: storyscript/auth:lts
   jwt:
     secret_key: my-secret-key
 
@@ -70,7 +70,7 @@ auth:
     client_secret:
 
 sls:
-  image: storyscript/sls
+  image: storyscript/sls:lts
 
 studio:
   image: storyscript/studio:lts
