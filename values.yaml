@@ -32,17 +32,8 @@ nginx-ingress:
       # only for GKE
       loadBalancerIP:
 
-hello-world:
-  # Enabling this creates a new owner, app and release
-  # deploying a simple http story at "hello-world.{{ .Values.domain }}"
-  enabled: false
-  image: storyscript/hello-world
-
 schema:
   image: storyscript/schema:lts
-
-gateway:
-  image: storyscript/gateway
 
 graphql:
   image: storyscript/graphql:lts
@@ -50,12 +41,6 @@ graphql:
   postgresqlUsername: storyscript_authenticator
   postgresqlPassword: storyscript_authenticator
   corsWhitelistRegexp: .*
-
-runtime:
-  image: storyscript/runtime
-
-synapse:
-  image: storyscript/synapse
 
 auth:
   image: storyscript/auth:lts
