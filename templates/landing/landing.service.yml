@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ .Release.Name }}-landing"
+  labels:
+    app: landing
+spec:
+  selector:
+    app: landing
+  type: ExternalName
+  externalName: storyscript.netlify.com
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 443
