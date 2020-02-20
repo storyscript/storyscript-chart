@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: "{{ .Release.Name }}-landing"
+  labels:
+    app: landing
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/server-alias: "www.{{ .Values.domain }}"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      proxy_intercept_errors on;
+      recursive_error_pages on;
+      error_page 403 404 = @static_studio;
+    nginx.ingress.kubernetes.io/server-snippet: |
+      location @static_studio {
+          proxy_set_header Host studio.{{ .Values.domain }};
+          proxy_pass https://studio.{{ .Values.domain }}$uri;
+      }
+spec:
+  {{- if .Values.tls.enabled }}
+  tls:
+  - hosts:
+     - "{{ .Values.domain }}"
+     - "www.{{ .Values.domain }}"
+    secretName: "{{ .Release.Name }}-tls-cert"
+  {{- end }}
+  rules:
+  - host: "{{ .Values.domain }}"
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: "{{ .Release.Name }}-landing"
+          servicePort: 80
