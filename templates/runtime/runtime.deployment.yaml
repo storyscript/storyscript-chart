@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Release.Name }}-runtime"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: runtime
+  template:
+    metadata:
+      labels:
+        app: runtime
+    spec:
+      containers:
+        - name: runtime
+          image: "{{ .Values.runtime.image }}"
+          imagePullPolicy: Always
+          ports:
+          - name: http
+            containerPort: 9001
+          env:
+            - name: HTTP_SERVICE_URL
+              value: {{ printf "http://%s-http.%s.svc.cluster.local:9000" .Release.Name .Release.Namespace }}

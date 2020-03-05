@@ -59,3 +59,12 @@ sls:
 
 studio:
   image: storyscript/studio:lts
+
+runtime:
+  image: storyscript/runtime
+
+worker:
+  image: storyscript/worker
+
+http:
+  image: storyscript/http
