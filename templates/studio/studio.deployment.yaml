@@ -31,3 +31,25 @@ spec:
               value: "auth.{{ .Values.domain }}/logout"
             - name: DOCS_ROOT
               value: "/docs"
+            - name: INTERCOM_APP_ID
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-studio"
+                  key: intercom_app_id
+            - name: INTERCOM_APP_ID
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-studio"
+                  key: intercom_app_id
+            - name: SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-studio"
+                  key: sentry_dsn
+            - name: FS_ORG_ID
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-studio"
+                  key: fs_org_id
+            - name: FS_DEBUG
+              value: "false"

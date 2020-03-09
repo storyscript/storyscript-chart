@@ -59,6 +59,10 @@ sls:
 
 studio:
   image: storyscript/studio:lts
+  integrations:
+    intercom:
+    sentry:
+    fullstory:
 
 runtime:
   image: storyscript/runtime
