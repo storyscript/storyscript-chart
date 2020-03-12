@@ -68,3 +68,7 @@ worker:
 
 http:
   image: storyscript/http
+
+wolfram:
+  image: storyscript/wolfram
+  app_id: 

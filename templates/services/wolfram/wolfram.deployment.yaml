@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Release.Name }}-wolfram"
+spec:
+  selector:
+    matchLabels:
+      app: wolfram
+  template:
+    metadata:
+      labels:
+        app: wolfram
+    spec:
+      containers:
+        - name: wolfram
+          image: "{{ .Values.wolfram.image }}"
+          ports:
+            - name: wolfram
+              containerPort: 5000
+          env:
+            - name: RUNTIME_URL
+              value: {{ printf "http://%s-runtime.%s.svc.cluster.local:9001" .Release.Name .Release.Namespace }}
+            - name: WOLFRAM_APP_ID
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-wolfram"
+                  key: wolfram_app_id

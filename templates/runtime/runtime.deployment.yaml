@@ -22,3 +22,5 @@ spec:
           env:
             - name: HTTP_SERVICE_URL
               value: {{ printf "http://%s-http.%s.svc.cluster.local:9000" .Release.Name .Release.Namespace }}
+            - name: WOLFRAM_SERVICE_URL
+              value: {{ printf "http://%s-wolfram.%s.svc.cluster.local:5000" .Release.Name .Release.Namespace }}
