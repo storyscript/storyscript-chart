@@ -32,6 +32,11 @@ nginx-ingress:
       # only for GKE
       loadBalancerIP:
 
+router:
+  image: storyscript/router
+  # only for GKE
+  loadBalancerIP:
+
 schema:
   image: storyscript/schema:lts
 
