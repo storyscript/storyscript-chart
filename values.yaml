@@ -1,6 +1,5 @@
-# Set this to your domain name
-# App URLs will be "<app-dns>.{{ .Values.domain }}"
 domain: example.com
+appsDomain: storyscriptapps.com
 
 tls:
   enabled: false
