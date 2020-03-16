@@ -1,5 +1,5 @@
 domain: example.com
-appsDomain: storyscriptapps.com
+appsDomain: exampleapps.com
 
 tls:
   enabled: false
