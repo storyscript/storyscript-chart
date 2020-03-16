@@ -21,6 +21,8 @@ spec:
           env:
             - name: HTTP_INGRESS_URL
               value: "http.{{ .Values.domain }}"
+            - name: DEFAULT_DOMAIN
+              value: "{{ .Values.appsDomain }}"
             - name: DATABASE_URL
               # used to connect to db
               valueFrom:
