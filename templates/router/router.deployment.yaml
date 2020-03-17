@@ -29,3 +29,13 @@ spec:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-database-credentials"
                   key: superuser-search_path
+            - name: TLS_CERT
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-tls-cert"
+                  key: tls.crt
+            - name: TLS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-tls-cert"
+                  key: tls.key
