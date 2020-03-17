@@ -31,3 +31,5 @@ spec:
               value: "auth.{{ .Values.domain }}/logout"
             - name: DOCS_ROOT
               value: "/docs"
+            - name: APPS_DOMAIN
+              value: "{{ .Values.appsDomain }}"
