@@ -66,6 +66,7 @@ studio:
 
 runtime:
   image: storyscript/runtime
+  wolfram_app_id:
 
 worker:
   image: storyscript/worker
