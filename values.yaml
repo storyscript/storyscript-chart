@@ -1,6 +1,5 @@
-# Set this to your domain name
-# App URLs will be "<app-dns>.{{ .Values.domain }}"
 domain: example.com
+appsDomain: exampleapps.com
 
 tls:
   enabled: false
@@ -31,6 +30,11 @@ nginx-ingress:
     service:
       # only for GKE
       loadBalancerIP:
+
+router:
+  image: storyscript/router
+  # only for GKE
+  loadBalancerIP:
 
 schema:
   image: storyscript/schema:lts
@@ -66,6 +70,7 @@ studio:
 
 runtime:
   image: storyscript/runtime
+  wolfram_app_id:
 
 worker:
   image: storyscript/worker
