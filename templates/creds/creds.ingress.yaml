@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: "{{ .Release.Name }}-creds"
+  labels:
+    app: creds
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  {{- if .Values.tls.enabled }}
+  tls:
+    - hosts:
+        - "creds.{{ .Values.domain }}"
+      secretName: "{{ .Release.Name }}-tls-cert"
+  {{- end }}
+  rules:
+    - host: "creds.{{ .Values.domain }}"
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: "{{ .Release.Name }}-creds"
+              servicePort: http-external

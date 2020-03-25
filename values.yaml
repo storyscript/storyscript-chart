@@ -58,6 +58,16 @@ auth:
     client_id:
     client_secret:
 
+creds:
+  image: storyscript/creds
+  gcp_secretmanager_key:
+  github:
+    client_id:
+    client_secret:
+  slack:
+    client_id:
+    client_secret:
+
 sls:
   image: storyscript/sls:lts
 
