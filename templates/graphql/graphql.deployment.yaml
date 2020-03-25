@@ -32,3 +32,5 @@ spec:
                   key: public
             - name: WHITELIST_DOMAINS_REGEXP
               value: {{ .Values.graphql.corsWhitelistRegexp }}
+            - name: CREDS_URL
+              value: {{ printf "http://%s-creds.%s.svc.cluster.local:9000" .Release.Name .Release.Namespace }}
