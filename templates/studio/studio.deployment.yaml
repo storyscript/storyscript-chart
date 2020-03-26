@@ -25,6 +25,8 @@ spec:
               value: "sls.{{ .Values.domain }}"
             - name: API_URL
               value: "api.{{ .Values.domain }}"
+            - name: CREDS_URL
+              value: "creds.{{ .Values.domain }}"
             - name: AUTH_URL
               value: "auth.{{ .Values.domain }}/login"
             - name: LOGOUT_URL

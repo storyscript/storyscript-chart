@@ -68,6 +68,10 @@ creds:
     client_id:
     client_secret:
 
+geh:
+  image: storyscript/geh
+  slack_signing_key: 
+
 sls:
   image: storyscript/sls:lts
 
