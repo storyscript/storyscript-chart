@@ -81,8 +81,5 @@ runtime:
 worker:
   image: storyscript/worker
 
-oauthproxy:
-  image: storyscript/oauthproxy
-
 http:
   image: storyscript/http
