@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Release.Name }}-router"
+spec:
+  selector:
+    matchLabels:
+      app: router
+  template:
+    metadata:
+      labels:
+        app: router
+    spec:
+      containers:
+        - name: router
+          image: "{{ .Values.router.image }}"
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 9000
+          env:
+            - name: HTTP_INGRESS_URL
+              value: "http.{{ .Values.domain }}"
+            - name: DEFAULT_DOMAIN
+              value: "{{ .Values.appsDomain }}"
+            - name: DATABASE_URL
+              # used to connect to db
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-database-credentials"
+                  key: superuser-search_path
+            - name: TLS_CERT
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-tls-cert"
+                  key: tls.crt
+            - name: TLS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-tls-cert"
+                  key: tls.key

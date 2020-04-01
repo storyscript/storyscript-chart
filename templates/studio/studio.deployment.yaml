@@ -53,3 +53,5 @@ spec:
                   key: fs_org_id
             - name: FS_DEBUG
               value: "false"
+            - name: APPS_DOMAIN
+              value: "{{ .Values.appsDomain }}"

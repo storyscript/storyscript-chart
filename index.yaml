@@ -2,6 +2,38 @@ apiVersion: v1
 entries:
   storyscript:
   - apiVersion: v1
+    created: "2020-03-18T11:20:54.562800539Z"
+    description: A Helm chart for Storyscript
+    digest: ad5550e4a9480df5b388abe40b0e40dd5068635c490e682afb0a2e4940709c49
+    name: storyscript
+    urls:
+    - https://github.com/storyscript/storyscript-chart/releases/download/storyscript-0.11.1/storyscript-0.11.1.tgz
+    version: 0.11.1
+  - apiVersion: v1
+    created: "2020-03-18T11:00:55.191772834Z"
+    description: A Helm chart for Storyscript
+    digest: 878ef4b3f3077bdcad8fe114fd36c1aa2100f8627f984b8047adce1f54961e4c
+    name: storyscript
+    urls:
+    - https://github.com/storyscript/storyscript-chart/releases/download/storyscript-0.11.0/storyscript-0.11.0.tgz
+    version: 0.11.0
+  - apiVersion: v1
+    created: "2020-03-16T17:20:59.469010932Z"
+    description: A Helm chart for Storyscript
+    digest: 2c17fc1c2ce58e18ee91a34baed764f16e91c3691df6387c58dbb29b1a63d690
+    name: storyscript
+    urls:
+    - https://github.com/storyscript/storyscript-chart/releases/download/storyscript-0.10.0/storyscript-0.10.0.tgz
+    version: 0.10.0
+  - apiVersion: v1
+    created: "2020-03-10T15:23:00.046848623Z"
+    description: A Helm chart for Storyscript
+    digest: 5c9ef4ab82a1e46d4b2a85683563c156bd79168292816acdc433e630fdd9a11e
+    name: storyscript
+    urls:
+    - https://github.com/storyscript/storyscript-chart/releases/download/storyscript-0.9.1/storyscript-0.9.1.tgz
+    version: 0.9.1
+  - apiVersion: v1
     created: "2020-02-20T13:40:05.351363722Z"
     description: A Helm chart for Storyscript
     digest: 661ec83c63703001226b19fd183703b9f0010ebec8f3b7fdbecc61a29b51dd35
