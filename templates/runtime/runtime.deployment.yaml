@@ -22,7 +22,7 @@ spec:
           env:
             - name: HTTP_SERVICE_URL
               value: {{ printf "http://%s-http.%s.svc.cluster.local:9000" .Release.Name .Release.Namespace }}
-            - name: CREDS_SERVICE_URL
+            - name: CREDS_URL
               value: {{ printf "http://%s-creds.%s.svc.cluster.local:9000" .Release.Name .Release.Namespace }}
             - name: GLOBAL_EVENTS_HANDLER_URL
               value: {{ printf "http://%s-geh.%s.svc.cluster.local:3000" .Release.Name .Release.Namespace }}
