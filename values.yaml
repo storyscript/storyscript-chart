@@ -61,8 +61,9 @@ studio:
   image: storyscript/studio:lts
   integrations:
     intercom:
-    sentry:
     fullstory:
+  sentry:
+    dsn:
 
 runtime:
   image: storyscript/runtime
