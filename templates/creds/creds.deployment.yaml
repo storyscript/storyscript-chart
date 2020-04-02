@@ -14,7 +14,6 @@ spec:
       containers:
         - name: creds
           image: "{{ .Values.creds.image }}"
-          imagePullPolicy: Always
           ports:
             - name: http-internal
               containerPort: 9000

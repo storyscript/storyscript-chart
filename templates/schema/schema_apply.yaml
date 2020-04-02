@@ -15,7 +15,6 @@ spec:
       containers:
         - name: schema-apply-job
           image: "{{ .Values.schema.image }}"
-          imagePullPolicy: Always
           env:
             - name: PGOPTIONS
               # used to create graphql authenticator role

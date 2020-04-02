@@ -15,7 +15,6 @@ spec:
       containers:
         - name: geh
           image: "{{ .Values.geh.image }}"
-          imagePullPolicy: Always
           ports:
           - name: http
             containerPort: 3000

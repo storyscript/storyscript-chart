@@ -15,7 +15,6 @@ spec:
       containers:
         - name: worker
           image: "{{ .Values.worker.image }}"
-          imagePullPolicy: Always
           env:
             - name: RUNTIME_URL
               value: {{ printf "http://%s-runtime.%s.svc.cluster.local:9001" .Release.Name .Release.Namespace }}
