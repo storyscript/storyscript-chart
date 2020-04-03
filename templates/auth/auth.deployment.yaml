@@ -42,6 +42,8 @@ spec:
                   key: github_client_secret
             - name: DOMAIN
               value: "{{ .Values.domain }}"
+            - name: SELF_DOMAIN
+              value: http{{ ternary "s" "" .Values.tls.enabled }}://auth.{{ .Values.domain }}
             - name: DEFAULT_REDIRECT_URI
               value: http{{ ternary "s" "" .Values.tls.enabled }}://studio.{{ .Values.domain }}
             - name: ALLOWLIST_TOKEN
