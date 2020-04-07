@@ -35,3 +35,8 @@ spec:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-runtime"
                   key: wolfram_app_id
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-database-credentials"
+                  key: superuser-search_path
