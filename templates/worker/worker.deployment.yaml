@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: worker
-          image: "{{ .Values.worker.image }}"
+          image: {{ include "storyscript.image" .Values.worker.image }}
           env:
             - name: RUNTIME_URL
               value: {{ printf "http://%s-runtime.%s.svc.cluster.local:9001" .Release.Name .Release.Namespace }}

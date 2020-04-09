@@ -14,7 +14,7 @@ spec:
       restartPolicy: OnFailure
       containers:
         - name: schema-apply-job
-          image: "{{ .Values.schema.image }}"
+          image: {{ include "storyscript.image" .Values.schema.image }}
           env:
             - name: PGOPTIONS
               # used to create graphql authenticator role
