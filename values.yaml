@@ -34,16 +34,19 @@ nginx-ingress:
 router:
   image:
     repository: storyscript/router
+    tag: v0.1.0
   # only for GKE
   loadBalancerIP:
 
 schema:
   image:
     repository: storyscript/schema
+    tag: v0.1.0
 
 graphql:
   image:
     repository: storyscript/graphql
+    tag: v0.1.0
   # Credentials of the role used by the API server
   postgresqlUsername: storyscript_authenticator
   postgresqlPassword: storyscript_authenticator
@@ -52,6 +55,7 @@ graphql:
 auth:
   image:
     repository: storyscript/auth
+    tag: v0.1.0
   jwt:
     secret_key: my-secret-key
 
@@ -65,6 +69,7 @@ auth:
 creds:
   image:
     repository: storyscript/creds
+    tag: v0.1.0
   gcp_secretmanager_key:
   github:
     client_id:
@@ -76,29 +81,36 @@ creds:
 geh:
   image:
     repository: storyscript/geh
+    tag: v0.1.0
   slack_signing_key:
 
 sls:
   image:
     repository: storyscript/sls
+    tag: v0.5.2
 
 studio:
   image:
     repository: storyscript/studio
+    tag: v0.9.0
 
 runtime:
   image:
     repository: storyscript/runtime
+    tag: v0.1.0
   wolfram_app_id:
 
 worker:
   image:
     repository: storyscript/worker
+    tag: v0.1.0
 
 oauthproxy:
   image:
     repository: storyscript/oauthproxy
+    tag: v0.1.0
 
 http:
   image:
     repository: storyscript/http
+    tag: v0.1.0
