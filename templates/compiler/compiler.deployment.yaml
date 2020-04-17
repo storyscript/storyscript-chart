@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Release.Name }}-compiler"
+spec:
+  selector:
+    matchLabels:
+      app: compiler
+  template:
+    metadata:
+      labels:
+        app: compiler
+    spec:
+      containers:
+        - name: compiler
+          image: {{ include "storyscript.image" .Values.compiler.image }}
+          ports:
+            - name: compiler
+              containerPort: 5001

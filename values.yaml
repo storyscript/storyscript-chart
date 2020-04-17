@@ -66,6 +66,11 @@ auth:
     client_id:
     client_secret:
 
+compiler:
+  image:
+    repository: storyscript/language
+    tag: latest
+
 creds:
   image:
     repository: storyscript/creds
