@@ -105,11 +105,6 @@ worker:
     repository: storyscript/worker
     tag: v0.1.0
 
-oauthproxy:
-  image:
-    repository: storyscript/oauthproxy
-    tag: v0.1.0
-
 http:
   image:
     repository: storyscript/http
