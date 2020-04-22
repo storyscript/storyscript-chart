@@ -102,7 +102,7 @@ studio:
 runtime:
   image:
     repository: storyscript/runtime
-    tag: v0.4.1
+    tag: v0.5.1
   wolfram_app_id:
 
 worker:
