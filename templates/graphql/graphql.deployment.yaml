@@ -33,3 +33,5 @@ spec:
               value: {{ .Values.graphql.corsWhitelistRegexp }}
             - name: CREDS_URL
               value: {{ printf "http://%s-creds.%s.svc.cluster.local:9000" .Release.Name .Release.Namespace }}
+            - name: RUNTIME_URL
+              value: {{ printf "http://%s-runtime.%s.svc.cluster.local:9001" .Release.Name .Release.Namespace }}
