@@ -2,6 +2,14 @@ apiVersion: v1
 entries:
   storyscript:
   - apiVersion: v1
+    created: "2020-04-24T14:23:26.118695438Z"
+    description: A Helm chart for Storyscript
+    digest: e07f439936a185ceb477e51c581811e0d26e0fabe636b778277f0d73caa88513
+    name: storyscript
+    urls:
+    - https://github.com/storyscript/storyscript-chart/releases/download/storyscript-0.21.0/storyscript-0.21.0.tgz
+    version: 0.21.0
+  - apiVersion: v1
     created: "2020-04-23T16:34:07.63465849Z"
     description: A Helm chart for Storyscript
     digest: 642b19a9233af2904b0377bef8b81bbd0ec4ca0f6a7eeae7eea830fa5bd80b4e
