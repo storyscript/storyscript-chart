@@ -74,7 +74,7 @@ compiler:
 creds:
   image:
     repository: storyscript/creds
-    tag: v0.1.0
+    tag: v0.2.0
   gcp_secretmanager_key:
   github:
     client_id:
@@ -86,7 +86,7 @@ creds:
 geh:
   image:
     repository: storyscript/geh
-    tag: v0.1.0
+    tag: v0.2.0
   slack_signing_key:
 
 sls:
@@ -102,7 +102,7 @@ studio:
 runtime:
   image:
     repository: storyscript/runtime
-    tag: v0.4.1
+    tag: v0.6.0
   wolfram_app_id:
 
 worker:
@@ -113,4 +113,4 @@ worker:
 http:
   image:
     repository: storyscript/http
-    tag: v0.2.0
+    tag: v0.3.0
