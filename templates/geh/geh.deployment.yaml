@@ -26,3 +26,5 @@ spec:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-geh"
                   key: slack_signing_key
+            - name: CREDS_URL
+              value: {{ printf "http://%s-creds.%s.svc.cluster.local:9000" .Release.Name .Release.Namespace }}
