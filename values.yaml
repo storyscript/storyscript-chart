@@ -98,6 +98,11 @@ studio:
   image:
     repository: storyscript/studio
     tag: v0.9.0
+  integrations:
+    intercom:
+    fullstory:
+  sentry:
+    dsn:
 
 runtime:
   image:
