@@ -1,21 +1,21 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: "{{ .Release.Name }}-http"
+  name: "{{ .Release.Name }}-geh"
   labels:
-    app: http
+    app: geh
 spec:
   {{- if .Values.tls.enabled }}
   tls:
   - hosts:
-     - "http.{{ .Values.domain }}"
+     - "events.{{ .Values.domain }}"
     secretName: "{{ .Release.Name }}-tls-cert"
   {{- end }}
   rules:
-  - host: "*.http.{{ .Values.domain }}"
+  - host: "events.{{ .Values.domain }}"
     http:
       paths:
       - path: /
         backend:
-          serviceName: "{{ .Release.Name }}-http"
-          servicePort: 9000
+          serviceName: "{{ .Release.Name }}-geh"
+          servicePort: 3000

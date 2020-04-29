@@ -13,14 +13,13 @@ spec:
     spec:
       containers:
         - name: router
-          image: "{{ .Values.router.image }}"
-          imagePullPolicy: Always
+          image: {{ include "storyscript.image" .Values.router.image }}
           ports:
             - name: http
               containerPort: 9000
           env:
             - name: HTTP_INGRESS_URL
-              value: "http.{{ .Values.domain }}"
+              value: {{ printf "%s-http.%s.svc.cluster.local:9000" .Release.Name .Release.Namespace }}
             - name: DEFAULT_DOMAIN
               value: "{{ .Values.appsDomain }}"
             - name: DATABASE_URL

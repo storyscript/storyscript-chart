@@ -32,22 +32,30 @@ nginx-ingress:
       loadBalancerIP:
 
 router:
-  image: storyscript/router
+  image:
+    repository: storyscript/router
+    tag: v0.1.0
   # only for GKE
   loadBalancerIP:
 
 schema:
-  image: storyscript/schema:lts
+  image:
+    repository: storyscript/schema
+    tag: v0.2.0
 
 graphql:
-  image: storyscript/graphql:lts
+  image:
+    repository: storyscript/graphql
+    tag: v0.2.0
   # Credentials of the role used by the API server
   postgresqlUsername: storyscript_authenticator
   postgresqlPassword: storyscript_authenticator
   corsWhitelistRegexp: .*
 
 auth:
-  image: storyscript/auth:lts
+  image:
+    repository: storyscript/auth
+    tag: v0.1.0
   jwt:
     secret_key: my-secret-key
 
@@ -58,11 +66,38 @@ auth:
     client_id:
     client_secret:
 
+compiler:
+  image:
+    repository: storyscript/language
+    tag: latest
+
+creds:
+  image:
+    repository: storyscript/creds
+    tag: v0.2.0
+  gcp_secretmanager_key:
+  github:
+    client_id:
+    client_secret:
+  slack:
+    client_id:
+    client_secret:
+
+geh:
+  image:
+    repository: storyscript/geh
+    tag: v0.2.0
+  slack_signing_key:
+
 sls:
-  image: storyscript/sls:lts
+  image:
+    repository: storyscript/sls
+    tag: v0.5.2
 
 studio:
-  image: storyscript/studio:lts
+  image:
+    repository: storyscript/studio
+    tag: v0.9.0
   integrations:
     intercom:
     fullstory:
@@ -70,11 +105,17 @@ studio:
     dsn:
 
 runtime:
-  image: storyscript/runtime
+  image:
+    repository: storyscript/runtime
+    tag: v0.6.1
   wolfram_app_id:
 
 worker:
-  image: storyscript/worker
+  image:
+    repository: storyscript/worker
+    tag: v0.1.0
 
 http:
-  image: storyscript/http
+  image:
+    repository: storyscript/http
+    tag: v0.3.0

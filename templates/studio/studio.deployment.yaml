@@ -13,8 +13,7 @@ spec:
     spec:
       containers:
         - name: studio
-          image: "{{ .Values.studio.image }}"
-          imagePullPolicy: Always
+          image: {{ include "storyscript.image" .Values.studio.image }}
           ports:
             - name: public
               containerPort: 80
@@ -25,6 +24,8 @@ spec:
               value: "sls.{{ .Values.domain }}"
             - name: API_URL
               value: "api.{{ .Values.domain }}"
+            - name: CREDS_URL
+              value: "creds.{{ .Values.domain }}"
             - name: AUTH_URL
               value: "auth.{{ .Values.domain }}/login"
             - name: LOGOUT_URL

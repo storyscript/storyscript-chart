@@ -13,12 +13,10 @@ spec:
     spec:
       containers:
         - name: http
-          image: "{{ .Values.http.image }}"
+          image: {{ include "storyscript.image" .Values.http.image }}
           ports:
             - name: http
               containerPort: 9000
           env:
             - name: RUNTIME_URL
               value: {{ printf "http://%s-runtime.%s.svc.cluster.local:9001" .Release.Name .Release.Namespace }}
-            - name: DOMAIN
-              value: "http.{{ .Values.domain }}"

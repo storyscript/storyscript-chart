@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Release.Name }}-geh"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: geh
+  template:
+    metadata:
+      labels:
+        app: geh
+    spec:
+      containers:
+        - name: geh
+          image: {{ include "storyscript.image" .Values.geh.image }}
+          ports:
+          - name: http
+            containerPort: 3000
+          env:
+            - name: RUNTIME_URL
+              value: {{ printf "http://%s-runtime.%s.svc.cluster.local:9001" .Release.Name .Release.Namespace }}
+            - name: SLACK_SIGNING_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-geh"
+                  key: slack_signing_key
+            - name: CREDS_URL
+              value: {{ printf "http://%s-creds.%s.svc.cluster.local:9000" .Release.Name .Release.Namespace }}

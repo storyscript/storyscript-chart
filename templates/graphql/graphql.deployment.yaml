@@ -13,8 +13,7 @@ spec:
     spec:
       containers:
         - name: graphql
-          image: "{{ .Values.graphql.image }}"
-          imagePullPolicy: Always
+          image: {{ include "storyscript.image" .Values.graphql.image }}
           ports:
             - name: http
               containerPort: 3000
@@ -32,3 +31,5 @@ spec:
                   key: public
             - name: WHITELIST_DOMAINS_REGEXP
               value: {{ .Values.graphql.corsWhitelistRegexp }}
+            - name: CREDS_URL
+              value: {{ printf "http://%s-creds.%s.svc.cluster.local:9000" .Release.Name .Release.Namespace }}

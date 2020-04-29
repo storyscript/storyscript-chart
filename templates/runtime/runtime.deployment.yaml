@@ -14,14 +14,24 @@ spec:
     spec:
       containers:
         - name: runtime
-          image: "{{ .Values.runtime.image }}"
-          imagePullPolicy: Always
+          image: {{ include "storyscript.image" .Values.runtime.image }}
           ports:
           - name: http
             containerPort: 9001
           env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-database-credentials"
+                  key: superuser
+            - name: COMPILER_URL
+              value: {{ printf "http://%s-compiler.%s.svc.cluster.local" .Release.Name .Release.Namespace }}
             - name: HTTP_SERVICE_URL
               value: {{ printf "http://%s-http.%s.svc.cluster.local:9000" .Release.Name .Release.Namespace }}
+            - name: CREDS_URL
+              value: {{ printf "http://%s-creds.%s.svc.cluster.local:9000" .Release.Name .Release.Namespace }}
+            - name: GLOBAL_EVENTS_HANDLER_URL
+              value: {{ printf "http://%s-geh.%s.svc.cluster.local:3000" .Release.Name .Release.Namespace }}
             - name: WOLFRAM_APP_ID
               valueFrom:
                 secretKeyRef:

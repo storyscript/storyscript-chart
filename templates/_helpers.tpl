@@ -27,3 +27,8 @@
 
   {{- printf "%s://%s@%s/%s%s" (get $params "scheme") (get $params "credentials") (get $params "host") (get $params "database") (get $params "search_path") -}}
 {{- end -}}
+
+{{- define "storyscript.image" -}}
+  {{- $repository := required "An image repository must be specified" .repository -}}
+  {{- printf "%s:%s" $repository (default "latest" .tag) -}}
+{{- end -}}
