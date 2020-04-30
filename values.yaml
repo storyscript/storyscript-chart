@@ -86,7 +86,7 @@ creds:
 geh:
   image:
     repository: storyscript/geh
-    tag: v0.2.0
+    tag: v0.3.0
   slack_signing_key:
 
 sls:
@@ -113,7 +113,7 @@ runtime:
 worker:
   image:
     repository: storyscript/worker
-    tag: v0.1.1
+    tag: v0.2.0
 
 http:
   image:
