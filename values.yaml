@@ -97,7 +97,7 @@ sls:
 studio:
   image:
     repository: storyscript/studio
-    tag: v0.9.0
+    tag: v0.10.0
   integrations:
     intercom:
     fullstory:
