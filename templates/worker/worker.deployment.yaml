@@ -23,3 +23,5 @@ spec:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-database-credentials"
                   key: superuser-search_path
+            - name: GLOBAL_EVENTS_HANDLER_URL
+              value: {{ printf "http://%s-geh.%s.svc.cluster.local:3000" .Release.Name .Release.Namespace }}
