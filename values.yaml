@@ -41,12 +41,12 @@ router:
 schema:
   image:
     repository: storyscript/schema
-    tag: v0.2.0
+    tag: v0.3.0
 
 graphql:
   image:
     repository: storyscript/graphql
-    tag: v0.2.0
+    tag: v0.3.0
   # Credentials of the role used by the API server
   postgresqlUsername: storyscript_authenticator
   postgresqlPassword: storyscript_authenticator
@@ -69,7 +69,7 @@ auth:
 compiler:
   image:
     repository: storyscript/language
-    tag: latest
+    tag: v0.27.1
 
 creds:
   image:
@@ -107,13 +107,13 @@ studio:
 runtime:
   image:
     repository: storyscript/runtime
-    tag: v0.6.1
+    tag: v0.7.0
   wolfram_app_id:
 
 worker:
   image:
     repository: storyscript/worker
-    tag: v0.1.0
+    tag: v0.1.1
 
 http:
   image:
