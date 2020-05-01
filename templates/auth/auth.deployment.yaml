@@ -45,7 +45,7 @@ spec:
             - name: SELF_DOMAIN
               value: http{{ ternary "s" "" .Values.tls.enabled }}://auth.{{ .Values.domain }}
             - name: DEFAULT_REDIRECT_URI
-              value: http{{ ternary "s" "" .Values.tls.enabled }}://{{ .Values.domain }}
+              value: http{{ ternary "s" "" .Values.tls.enabled }}://{{ .Values.domain }}/new
             - name: ALLOWLIST_TOKEN
               valueFrom:
                 secretKeyRef:
