@@ -18,5 +18,10 @@ spec:
             - name: http
               containerPort: 9000
           env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-database-credentials"
+                  key: superuser
             - name: RUNTIME_URL
               value: {{ printf "http://%s-runtime.%s.svc.cluster.local:9001" .Release.Name .Release.Namespace }}
