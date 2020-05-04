@@ -46,4 +46,4 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-runtime"
-                  key: github_app_private_Key
+                  key: github_app_private_key
