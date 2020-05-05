@@ -46,7 +46,7 @@ schema:
 graphql:
   image:
     repository: storyscript/graphql
-    tag: v0.3.0
+    tag: v0.4.0
   # Credentials of the role used by the API server
   postgresqlUsername: storyscript_authenticator
   postgresqlPassword: storyscript_authenticator
@@ -66,7 +66,7 @@ auth:
     client_id:
     client_secret:
 
-compiler:
+language:
   image:
     repository: storyscript/language
     tag: v0.27.1
