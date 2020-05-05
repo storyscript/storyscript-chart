@@ -28,6 +28,8 @@ spec:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-database-credentials"
                   key: public
+            - name: COMPILER_URL
+              value: {{ printf "http://%s-compiler.%s.svc.cluster.local" .Release.Name .Release.Namespace }}
             - name: WHITELIST_DOMAINS_REGEXP
               value: {{ .Values.graphql.corsWhitelistRegexp }}
             - name: CREDS_URL
