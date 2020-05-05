@@ -24,7 +24,6 @@ spec:
                   name: "{{ .Release.Name }}-auth"
                   key: jwt_secret_key
             - name: DATABASE_URL
-              # used to connect to db
               valueFrom:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-database-credentials"
@@ -35,3 +34,5 @@ spec:
               value: {{ .Values.graphql.corsWhitelistRegexp }}
             - name: CREDS_URL
               value: {{ printf "http://%s-creds.%s.svc.cluster.local:9000" .Release.Name .Release.Namespace }}
+            - name: RUNTIME_URL
+              value: {{ printf "http://%s-runtime.%s.svc.cluster.local:9001" .Release.Name .Release.Namespace }}

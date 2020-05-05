@@ -41,7 +41,7 @@ router:
 schema:
   image:
     repository: storyscript/schema
-    tag: v0.2.0
+    tag: v0.3.0
 
 graphql:
   image:
@@ -66,10 +66,10 @@ auth:
     client_id:
     client_secret:
 
-compiler:
+language:
   image:
     repository: storyscript/language
-    tag: latest
+    tag: v0.27.1
 
 creds:
   image:
@@ -86,7 +86,7 @@ creds:
 geh:
   image:
     repository: storyscript/geh
-    tag: v0.2.0
+    tag: v0.3.0
   slack_signing_key:
 
 sls:
@@ -97,18 +97,23 @@ sls:
 studio:
   image:
     repository: storyscript/studio
-    tag: v0.9.0
+    tag: v0.10.0
+  integrations:
+    intercom:
+    fullstory:
+  sentry:
+    dsn:
 
 runtime:
   image:
     repository: storyscript/runtime
-    tag: v0.6.1
+    tag: v0.8.0
   wolfram_app_id:
 
 worker:
   image:
     repository: storyscript/worker
-    tag: v0.1.0
+    tag: v0.2.0
 
 http:
   image:

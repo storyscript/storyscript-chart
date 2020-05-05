@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Release.Name }}-language"
+spec:
+  selector:
+    matchLabels:
+      app: language
+  template:
+    metadata:
+      labels:
+        app: language
+    spec:
+      containers:
+        - name: language
+          image: {{ include "storyscript.image" .Values.language.image }}
+          ports:
+            - name: language
+              containerPort: 5001
+          env:
+            - name: GRAPHQL_URL
+              value: {{ printf "http://%s-graphql.%s.svc.cluster.local:3000/graphql" .Release.Name .Release.Namespace }}
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-database-credentials"
+                  key: superuser
