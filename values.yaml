@@ -41,7 +41,7 @@ router:
 schema:
   image:
     repository: storyscript/schema
-    tag: v0.3.0
+    tag: v0.4.1
 
 graphql:
   image:
