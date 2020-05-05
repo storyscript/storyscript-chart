@@ -109,6 +109,9 @@ runtime:
     repository: storyscript/runtime
     tag: v0.8.0
   wolfram_app_id:
+  github:
+    app_id:
+    app_private_key:
 
 worker:
   image:
