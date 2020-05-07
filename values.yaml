@@ -55,7 +55,7 @@ graphql:
 auth:
   image:
     repository: storyscript/auth
-    tag: v0.1.0
+    tag: v0.2.0
   jwt:
     secret_key: my-secret-key
 
