@@ -14,6 +14,7 @@ spec:
       containers:
         - name: creds
           image: {{ include "storyscript.image" .Values.creds.image }}
+          imagePullPolicy: Always
           ports:
             - name: http-internal
               containerPort: 9000

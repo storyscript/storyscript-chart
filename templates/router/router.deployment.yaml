@@ -14,6 +14,7 @@ spec:
       containers:
         - name: router
           image: {{ include "storyscript.image" .Values.router.image }}
+          imagePullPolicy: Always
           ports:
             - name: http
               containerPort: 9000
@@ -23,7 +24,6 @@ spec:
             - name: DEFAULT_DOMAIN
               value: "{{ .Values.appsDomain }}"
             - name: DATABASE_URL
-              # used to connect to db
               valueFrom:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-database-credentials"
