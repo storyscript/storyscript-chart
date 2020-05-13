@@ -81,7 +81,7 @@ http:
     repository: storyscript/http
     tag: v0.4.0
 
-language:
+compiler:
   image:
     repository: storyscript/language
     tag: v0.28.0

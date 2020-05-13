@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: "{{ .Release.Name }}-language"
+  name: "{{ .Release.Name }}-compiler"
   labels:
-    app: language
+    app: compiler
 spec:
   selector:
-    app: language
+    app: compiler
   ports:
     - port: 80
       name: external

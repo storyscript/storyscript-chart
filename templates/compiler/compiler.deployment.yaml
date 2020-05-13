@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "{{ .Release.Name }}-language"
+  name: "{{ .Release.Name }}-compiler"
 spec:
   selector:
     matchLabels:
-      app: language
+      app: compiler
   template:
     metadata:
       labels:
-        app: language
+        app: compiler
     spec:
       containers:
-        - name: language
-          image: {{ include "storyscript.image" .Values.language.image }}
+        - name: compiler
+          image: {{ include "storyscript.image" .Values.compiler.image }}
           imagePullPolicy: Always
           ports:
-            - name: language
+            - name: compiler
               containerPort: 5001
           env:
             - name: GRAPHQL_URL
