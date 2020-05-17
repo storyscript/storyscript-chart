@@ -1,10 +1,13 @@
+# $ skaffold dev: build and deploy your app every time your code changes
+# $ skaffold run: build and deploy your app once, similar to a CI/CD pipeline
 apiVersion: skaffold/v2beta3
 kind: Config
 build:
-  # to avoid pushing to the storyscript image repository,
-  # please set the SKAFFOLD_DEFAULT_REPO environment variable
-  # https://skaffold.dev/docs/environment/image-registries/
+  # to avoid pushing images to the storyscript repository,
+  # please set a "default-repo" for skaffold
+  # see https://skaffold.dev/docs/environment/image-registries/
   artifacts:
+    # please clone the git repos for all artifacts, as required by `context`
     - image: storyscript/auth
       context: ../auth/
     - image: storyscript/language
@@ -37,8 +40,12 @@ deploy:
       - name: storyscript
         chartPath: ./
         imageStrategy:
+          # our image values use the helm convention
+          # i.e. image: { repository, tag }
           helm: {}
         values:
+          # skaffold will update these image values (using imageStrategy)
+          # to match those generated during the build step
           auth.image: storyscript/auth
           compiler.image: storyscript/language
           creds.image: storyscript/creds
@@ -52,4 +59,6 @@ deploy:
           studio.image: storyscript/studio
           worker.image: storyscript/worker
         valuesFiles:
+          # please get the values file for your pool env
+          # $ helm get values storyscript > values.env.yaml
           - ./values.env.yaml
