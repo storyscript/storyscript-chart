@@ -14,7 +14,7 @@ spec:
       restartPolicy: OnFailure
       containers:
         - name: schema-apply-job
-          image: {{ include "storyscript.image" .Values.schema.image }}
+          image: {{ .Values.schema.image }}
           imagePullPolicy: Always
           env:
             - name: PGOPTIONS

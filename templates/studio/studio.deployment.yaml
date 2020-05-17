@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: studio
-          image: {{ include "storyscript.image" .Values.studio.image }}
+          image: {{ .Values.studio.image }}
           imagePullPolicy: Always
           ports:
             - name: public
