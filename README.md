@@ -10,9 +10,9 @@ $ brew install skaffold
 ```
 - Configure [`default-repo`](https://skaffold.dev/docs/environment/image-registries/) to avoid pushing images to the `storyscript` repository
 ```bash
-$ skaffold config set default-repo <myrepo>
+$ echo "export SKAFFOLD_DEFAULT_REPO=my-repo" >> ~/.bashrc  # or your shell
 ```
-- Clone the chart and all its build artifacts
+- Clone the chart and all its build artifacts, under the same directory
 ```bash
 $ git clone git@github.com:storyscript/storyscript-chart.git
 $ yq read storyscript-chart/skaffold.yaml "build.artifacts.*.image" |
