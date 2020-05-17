@@ -104,7 +104,7 @@ runtime:
 
 schema:
   image:
-    repository: storyscript/schema
+    repository: storyscript/database
     tag: v0.5.0
 
 sls:

@@ -24,7 +24,7 @@ build:
       context: ../router/
     - image: storyscript/runtime
       context: ../runtime/
-    - image: storyscript/schema
+    - image: storyscript/database
       context: ../database/
     - image: storyscript/sls
       context: ../sls/
@@ -54,7 +54,7 @@ deploy:
           http.image: storyscript/http
           router.image: storyscript/router
           runtime.image: storyscript/runtime
-          schema.image: storyscript/schema
+          schema.image: storyscript/database
           sls.image: storyscript/sls
           studio.image: storyscript/studio
           worker.image: storyscript/worker
