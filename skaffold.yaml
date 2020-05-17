@@ -1,0 +1,91 @@
+apiVersion: skaffold/v2beta3
+kind: Config
+build:
+  # to avoid pushing to the storyscript image repository,
+  # please set the SKAFFOLD_DEFAULT_REPO environment variable
+  # https://skaffold.dev/docs/environment/image-registries/
+  artifacts:
+    - image: storyscript/auth
+      context: ../auth
+    - image: storyscript/language
+      context: ../language
+    - image: storyscript/creds
+      context: ../creds
+    - image: storyscript/geh
+      context: ../geh
+    - image: storyscript/graphql
+      context: ../graphql
+    - image: storyscript/http
+      context: ../http
+    - image: storyscript/router
+      context: ../router
+    - image: storyscript/runtime
+      context: ../runtime
+    - image: storyscript/schema
+      context: ../database
+    - image: storyscript/sls
+      context: ../sls
+    - image: storyscript/studio
+      context: ../studio
+      docker:
+        dockerfile: ./.docker/Dockerfile.docker
+    - image: storyscript/worker
+      context: ../worker
+deploy:
+  helm:
+    releases:
+      - name: storyscript
+        chartPath: .
+        imageStrategy:
+          helm: {}
+        values:
+          auth.image: storyscript/auth
+          compiler.image: storyscript/language
+          creds.image: storyscript/creds
+          geh.image: storyscript/geh
+          graphql.image: storyscript/graphql
+          http.image: storyscript/http
+          router.image: storyscript/router
+          runtime.image: storyscript/runtime
+          schema.image: storyscript/schema
+          sls.image: storyscript/sls
+          studio.image: storyscript/studio
+          worker.image: storyscript/worker
+profiles:
+  # TODO: DRY this
+  - name: beatrix
+    patches:
+      - op: add
+        path: /deploy/helm/releases/0/valuesFiles
+        value:
+          - env/values.beatrix.yaml
+  - name: ooster
+    patches:
+      - op: add
+        path: /deploy/helm/releases/0/valuesFiles
+        value:
+          - env/values.ooster.yaml
+  - name: rembrandt
+    patches:
+      - op: add
+        path: /deploy/helm/releases/0/valuesFiles
+        value:
+          - env/values.rembrandt.yaml
+  - name: sarphati
+    patches:
+      - op: add
+        path: /deploy/helm/releases/0/valuesFiles
+        value:
+          - env/values.sarphati.yaml
+  - name: sloter
+    patches:
+      - op: add
+        path: /deploy/helm/releases/0/valuesFiles
+        value:
+          - env/values.sloter.yaml
+  - name: vondel
+    patches:
+      - op: add
+        path: /deploy/helm/releases/0/valuesFiles
+        value:
+          - env/values.vondel.yaml
