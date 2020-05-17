@@ -12,7 +12,7 @@ $ brew install skaffold
 ```bash
 $ echo "export SKAFFOLD_DEFAULT_REPO=my-repo" >> ~/.bashrc  # or your shell
 ```
-- Clone the chart and all its build artifacts, under the same directory
+- Clone the chart, and the repositories for all its skaffold build artifacts
 ```bash
 $ git clone git@github.com:storyscript/storyscript-chart.git
 $ yq read storyscript-chart/skaffold.yaml "build.artifacts.*.image" |
