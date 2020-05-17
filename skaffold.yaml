@@ -51,41 +51,5 @@ deploy:
           sls.image: storyscript/sls
           studio.image: storyscript/studio
           worker.image: storyscript/worker
-profiles:
-  # TODO: DRY this
-  - name: beatrix
-    patches:
-      - op: add
-        path: /deploy/helm/releases/0/valuesFiles
-        value:
-          - env/values.beatrix.yaml
-  - name: ooster
-    patches:
-      - op: add
-        path: /deploy/helm/releases/0/valuesFiles
-        value:
-          - env/values.ooster.yaml
-  - name: rembrandt
-    patches:
-      - op: add
-        path: /deploy/helm/releases/0/valuesFiles
-        value:
-          - env/values.rembrandt.yaml
-  - name: sarphati
-    patches:
-      - op: add
-        path: /deploy/helm/releases/0/valuesFiles
-        value:
-          - env/values.sarphati.yaml
-  - name: sloter
-    patches:
-      - op: add
-        path: /deploy/helm/releases/0/valuesFiles
-        value:
-          - env/values.sloter.yaml
-  - name: vondel
-    patches:
-      - op: add
-        path: /deploy/helm/releases/0/valuesFiles
-        value:
-          - env/values.vondel.yaml
+        valuesFiles:
+          - values.env.yaml
