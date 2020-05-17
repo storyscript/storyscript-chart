@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: router
-          image: {{ .Values.router.image }}
+          image: {{ include "storyscript.image" .Values.router.image }}
           imagePullPolicy: Always
           ports:
             - name: http

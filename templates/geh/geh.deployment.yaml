@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: geh
-          image: {{ .Values.geh.image }}
+          image: {{ include "storyscript.image" .Values.geh.image }}
           imagePullPolicy: Always
           ports:
           - name: http

@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: compiler
-          image: {{ .Values.compiler.image }}
+          image: {{ include "storyscript.image" .Values.compiler.image }}
           imagePullPolicy: Always
           ports:
             - name: compiler

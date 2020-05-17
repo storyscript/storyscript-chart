@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: http
-          image: {{ .Values.http.image }}
+          image: {{ include "storyscript.image" .Values.http.image }}
           imagePullPolicy: Always
           ports:
             - name: http

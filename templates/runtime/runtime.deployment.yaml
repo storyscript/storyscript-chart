@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: runtime
-          image: {{ .Values.runtime.image }}
+          image: {{ include "storyscript.image" .Values.runtime.image }}
           imagePullPolicy: Always
           ports:
           - name: http
