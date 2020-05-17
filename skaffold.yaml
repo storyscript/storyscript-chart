@@ -6,36 +6,36 @@ build:
   # https://skaffold.dev/docs/environment/image-registries/
   artifacts:
     - image: storyscript/auth
-      context: ../auth
+      context: ../auth/
     - image: storyscript/language
-      context: ../language
+      context: ../language/
     - image: storyscript/creds
-      context: ../creds
+      context: ../creds/
     - image: storyscript/geh
-      context: ../geh
+      context: ../geh/
     - image: storyscript/graphql
-      context: ../graphql
+      context: ../graphql/
     - image: storyscript/http
-      context: ../http
+      context: ../http/
     - image: storyscript/router
-      context: ../router
+      context: ../router/
     - image: storyscript/runtime
-      context: ../runtime
+      context: ../runtime/
     - image: storyscript/schema
-      context: ../database
+      context: ../database/
     - image: storyscript/sls
-      context: ../sls
+      context: ../sls/
     - image: storyscript/studio
-      context: ../studio
+      context: ../studio/
       docker:
         dockerfile: ./.docker/Dockerfile.docker
     - image: storyscript/worker
-      context: ../worker
+      context: ../worker/
 deploy:
   helm:
     releases:
       - name: storyscript
-        chartPath: .
+        chartPath: ./
         imageStrategy:
           helm: {}
         values:
@@ -52,4 +52,4 @@ deploy:
           studio.image: storyscript/studio
           worker.image: storyscript/worker
         valuesFiles:
-          - values.env.yaml
+          - ./values.env.yaml
