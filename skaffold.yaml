@@ -4,22 +4,22 @@ build:
   artifacts:
     - image: storyscript/auth
       context: ../auth/
-    - image: storyscript/language
-      context: ../language/
     - image: storyscript/creds
       context: ../creds/
+    - image: storyscript/database
+      context: ../database/
     - image: storyscript/geh
       context: ../geh/
     - image: storyscript/graphql
       context: ../graphql/
     - image: storyscript/http
       context: ../http/
+    - image: storyscript/language
+      context: ../language/
     - image: storyscript/router
       context: ../router/
     - image: storyscript/runtime
       context: ../runtime/
-    - image: storyscript/database
-      context: ../database/
     - image: storyscript/sls
       context: ../sls/
     - image: storyscript/studio
@@ -41,14 +41,14 @@ deploy:
           # skaffold will update these image values (using imageStrategy)
           # to match those generated during the build step
           auth.image: storyscript/auth
-          compiler.image: storyscript/language
           creds.image: storyscript/creds
+          schema.image: storyscript/database
           geh.image: storyscript/geh
           graphql.image: storyscript/graphql
           http.image: storyscript/http
+          compiler.image: storyscript/language
           router.image: storyscript/router
           runtime.image: storyscript/runtime
-          schema.image: storyscript/database
           sls.image: storyscript/sls
           studio.image: storyscript/studio
           worker.image: storyscript/worker
