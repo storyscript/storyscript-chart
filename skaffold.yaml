@@ -20,8 +20,6 @@ build:
       context: ../router/
     - image: storyscript/runtime
       context: ../runtime/
-    - image: storyscript/sls
-      context: ../sls/
     - image: storyscript/studio
       context: ../studio/
       docker:
@@ -49,7 +47,6 @@ deploy:
           compiler.image: storyscript/language
           router.image: storyscript/router
           runtime.image: storyscript/runtime
-          sls.image: storyscript/sls
           studio.image: storyscript/studio
           worker.image: storyscript/worker
         valuesFiles:
