@@ -21,8 +21,6 @@ spec:
           env:
             - name: SSL_ENABLE
               value: "{{ .Values.tls.enabled }}"
-            - name: SLS_URL
-              value: "sls.{{ .Values.domain }}"
             - name: API_URL
               value: "api.{{ .Values.domain }}"
             - name: CREDS_URL
