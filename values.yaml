@@ -107,11 +107,6 @@ schema:
     repository: storyscript/database
     tag: v0.5.0
 
-sls:
-  image:
-    repository: storyscript/sls
-    tag: v0.5.2
-
 studio:
   image:
     repository: storyscript/studio
