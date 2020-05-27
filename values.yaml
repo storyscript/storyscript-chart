@@ -110,7 +110,7 @@ schema:
 studio:
   image:
     repository: storyscript/studio
-    tag: v0.12.1
+    tag: v0.14.0
   integrations:
     intercom:
     fullstory:
@@ -120,4 +120,4 @@ studio:
 worker:
   image:
     repository: storyscript/worker
-    tag: v0.3.0
+    tag: v0.4.0
