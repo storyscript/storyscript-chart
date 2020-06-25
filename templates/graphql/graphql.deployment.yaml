@@ -37,3 +37,5 @@ spec:
               value: {{ printf "http://%s-creds.%s.svc.cluster.local:9000" .Release.Name .Release.Namespace }}
             - name: RUNTIME_URL
               value: {{ printf "http://%s-runtime.%s.svc.cluster.local:9001" .Release.Name .Release.Namespace }}
+            - name: NLP_URL
+              value: {{ printf "http://%s-nlp.%s.svc.cluster.local" .Release.Name .Release.Namespace }}
