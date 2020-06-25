@@ -10,11 +10,11 @@ spec:
   {{- if .Values.tls.enabled }}
   tls:
   - hosts:
-     - "studio.{{ .Values.domain }}"
+     - "app.{{ .Values.domain }}"
     secretName: "{{ .Release.Name }}-tls-cert"
   {{- end }}
   rules:
-  - host: "studio.{{ .Values.domain }}"
+  - host: "app.{{ .Values.domain }}"
     http:
       paths:
       - path: /
