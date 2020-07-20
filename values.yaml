@@ -106,6 +106,7 @@ runtime:
   github:
     app_id:
     app_private_key:
+  onegraph_app_id: 
 
 schema:
   image:
