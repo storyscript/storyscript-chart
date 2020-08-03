@@ -45,6 +45,11 @@ spec:
                 secretKeyRef:
                   name: "{{ .Release.Name }}-creds-config"
                   key: github_client_secret
+            - name: ONEGRAPH_APP_ID
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Release.Name }}-onegraph-credentials"
+                  key: app_id
           volumeMounts:
             - name: gcp-secretmanager-key
               mountPath: "/etc/gcp-secretmanager-key"

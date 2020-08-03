@@ -65,6 +65,8 @@ creds:
   slack:
     client_id:
     client_secret:
+  onegraph:
+    app_id:
 
 geh:
   image:
@@ -106,6 +108,8 @@ runtime:
   github:
     app_id:
     app_private_key:
+  onegraph:
+    app_id:
 
 schema:
   image:
