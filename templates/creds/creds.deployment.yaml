@@ -48,7 +48,7 @@ spec:
             - name: ONEGRAPH_APP_ID
               valueFrom:
                 secretKeyRef:
-                  name: "{{ .Release.Name }}-runtime"
+                  name: "{{ .Release.Name }}-creds-config"
                   key: onegraph_app_id
           volumeMounts:
             - name: gcp-secretmanager-key
